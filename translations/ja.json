@@ -91,5 +91,11 @@
     },
     "The key repeat keeps the opening alive. This is how long it stays after the last repeat, so a slow key repeat needs a higher value.": {
         "The key repeat keeps the opening alive. This is how long it stays after the last repeat, so a slow key repeat needs a higher value.": "キーリピートが窓を開いたままにします。最後のリピートからこの時間だけ残るので、リピートが遅い設定なら大きめにしてください。"
+    },
+    "Follow behind the windows": {
+        "Follow behind the windows": "ウィンドウの裏でも追従する"
+    },
+    "Takes the pointer position from niri instead of a sensor, so the hole also runs behind the windows, visible wherever they are see-through. Needs a niri that hands out the pointer position; without it nothing changes.": {
+        "Takes the pointer position from niri instead of a sensor, so the hole also runs behind the windows, visible wherever they are see-through. Needs a niri that hands out the pointer position; without it nothing changes.": "ポインターの位置をセンサーではなく niri から受け取るので、穴はウィンドウの裏でも動き、透けているところで見えます。ポインターの位置を渡してくれる niri が必要で、なければ何も変わりません。"
     }
 }

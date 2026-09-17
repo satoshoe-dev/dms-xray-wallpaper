@@ -91,5 +91,11 @@
     },
     "The key repeat keeps the opening alive. This is how long it stays after the last repeat, so a slow key repeat needs a higher value.": {
         "The key repeat keeps the opening alive. This is how long it stays after the last repeat, so a slow key repeat needs a higher value.": "La ripetizione del tasto tiene aperta l'apertura. Questo è il tempo che resta dopo l'ultima ripetizione, quindi con una ripetizione lenta serve un valore più alto."
+    },
+    "Follow behind the windows": {
+        "Follow behind the windows": "Seguire dietro le finestre"
+    },
+    "Takes the pointer position from niri instead of a sensor, so the hole also runs behind the windows, visible wherever they are see-through. Needs a niri that hands out the pointer position; without it nothing changes.": {
+        "Takes the pointer position from niri instead of a sensor, so the hole also runs behind the windows, visible wherever they are see-through. Needs a niri that hands out the pointer position; without it nothing changes.": "Prende la posizione del puntatore da niri invece che da un sensore, così il foro corre anche dietro le finestre e si vede dove sono trasparenti. Serve un niri che fornisca la posizione del puntatore; senza, non cambia nulla."
     }
 }

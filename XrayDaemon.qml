@@ -14,6 +14,10 @@
 //   peek:    a sensor on the overlay layer, switched on by IPC. It follows the
 //            pointer everywhere, including over windows, and takes clicks while
 //            it is on.
+//   stream:  niri can hand out the pointer position over its IPC socket, if it
+//            was built with the pointer stream. Then the hole follows behind
+//            the windows as well, with no surface of our own in the way. Where
+//            that is missing, the setting simply does nothing.
 //
 // On niri, background surfaces move with the workspaces unless they sit in the
 // backdrop; the README has the layer rule for the namespaces used here.
@@ -96,6 +100,12 @@ PluginComponent {
         root._settings;
         return Math.max(0, Math.min(100, cfg("topOpacity", 100)));
     }
+    // Follows the pointer everywhere through niri's pointer stream, if the
+    // running niri has it
+    readonly property bool followEverywhere: {
+        root._settings;
+        return cfg("followEverywhere", false);
+    }
     // How long the peek stays on after the last `peek hold`, in milliseconds
     readonly property int holdGrace: {
         root._settings;
@@ -114,6 +124,8 @@ PluginComponent {
     // is instead of gliding in from the last spot.
     property bool snapping: false
 
+    // The position is global, the same space niri and Quickshell use for screens.
+    // Each surface subtracts its own origin.
     function setPointer(x, y) {
         root.snapping = !root.holeOpen;
         root.pointerX = x;
@@ -170,6 +182,47 @@ PluginComponent {
         }
     }
 
+    // niri's pointer stream. The first line is the reply to the request; an
+    // error there means this niri does not know the stream.
+    readonly property string niriSocket: Quickshell.env("NIRI_SOCKET") || ""
+    property bool streamRefused: false
+    readonly property bool streamWanted: root.usable && root.followEverywhere && root.niriSocket !== "" && !root.streamRefused
+
+    Socket {
+        id: pointerStream
+
+        path: root.niriSocket
+        connected: root.streamWanted
+
+        parser: SplitParser {
+            splitMarker: "\n"
+
+            onRead: line => {
+                let msg;
+                try {
+                    msg = JSON.parse(line);
+                } catch (e) {
+                    return;
+                }
+                if (msg.Err !== undefined) {
+                    console.warn("xrayWallpaper: niri refused the pointer stream:", msg.Err);
+                    root.streamRefused = true;
+                    return;
+                }
+                const moved = msg.PointerMoved;
+                if (moved !== undefined)
+                    root.setPointer(moved.x, moved.y);
+            }
+        }
+
+        onConnectedChanged: {
+            if (connected)
+                write("\"PointerStream\"\n");
+            else if (!root.peeking)
+                root.holeOpen = false;
+        }
+    }
+
     // dms ipc call xray peek on|off|toggle
     IpcHandler {
         target: "xray"
@@ -207,7 +260,7 @@ PluginComponent {
 
         // dms ipc call xray set <key> <value>
         function set(key: string, value: string): string {
-            const allowed = ["on", "image", "imageOnTop", "radius", "softness", "ringWidth", "ringColor", "dimTop", "dimBottom", "followSpeed", "followOnDesktop", "peekSeconds", "topOpacity", "holdGrace"];
+            const allowed = ["on", "image", "imageOnTop", "radius", "softness", "ringWidth", "ringColor", "dimTop", "dimBottom", "followSpeed", "followOnDesktop", "peekSeconds", "topOpacity", "holdGrace", "followEverywhere"];
             if (allowed.indexOf(key) < 0)
                 return "unknown key, allowed: " + allowed.join(", ");
             let v = value;
@@ -225,7 +278,8 @@ PluginComponent {
                 "image": root.imagePath,
                 "imageOnTop": root.imageOnTop,
                 "peeking": root.peeking,
-                "open": root.holeOpen
+                "open": root.holeOpen,
+                "stream": root.followEverywhere ? (root.streamRefused ? "refused" : (pointerStream.connected ? "on" : "off")) : "disabled"
             });
         }
     }
@@ -274,6 +328,8 @@ PluginComponent {
                 ctl: root
                 imagePath: root.imagePath
                 fill: surface.fill
+                originX: surface.modelData?.x ?? 0
+                originY: surface.modelData?.y ?? 0
             }
         }
     }
@@ -281,7 +337,7 @@ PluginComponent {
     // Sensor on the desktop: background layer, so the surfaces that carry
     // desktop widgets (bottom layer) keep their clicks.
     Variants {
-        model: root.followOnDesktop && root.usable ? Quickshell.screens : []
+        model: root.followOnDesktop && root.usable && !root.streamWanted ? Quickshell.screens : []
 
         delegate: PanelWindow {
             id: deskSensor
@@ -307,10 +363,10 @@ PluginComponent {
                 anchors.fill: parent
                 hoverEnabled: true
                 acceptedButtons: Qt.NoButton
-                onPositionChanged: mouse => root.setPointer(mouse.x, mouse.y)
+                onPositionChanged: mouse => root.setPointer(mouse.x + (deskSensor.modelData?.x ?? 0), mouse.y + (deskSensor.modelData?.y ?? 0))
                 onContainsMouseChanged: {
                     if (containsMouse)
-                        root.setPointer(mouseX, mouseY);
+                        root.setPointer(mouseX + (deskSensor.modelData?.x ?? 0), mouseY + (deskSensor.modelData?.y ?? 0));
                 }
                 onExited: {
                     if (!root.peeking)
@@ -361,6 +417,8 @@ PluginComponent {
                 imagePath: root.imagePath
                 fill: peekSensor.fill
                 lensOnly: true
+                originX: peekSensor.modelData?.x ?? 0
+                originY: peekSensor.modelData?.y ?? 0
             }
 
             MouseArea {
@@ -368,10 +426,10 @@ PluginComponent {
                 hoverEnabled: true
                 acceptedButtons: Qt.LeftButton | Qt.RightButton | Qt.MiddleButton
                 cursorShape: Qt.CrossCursor
-                onPositionChanged: mouse => root.setPointer(mouse.x, mouse.y)
+                onPositionChanged: mouse => root.setPointer(mouse.x + (peekSensor.modelData?.x ?? 0), mouse.y + (peekSensor.modelData?.y ?? 0))
                 onContainsMouseChanged: {
                     if (containsMouse)
-                        root.setPointer(mouseX, mouseY);
+                        root.setPointer(mouseX + (peekSensor.modelData?.x ?? 0), mouseY + (peekSensor.modelData?.y ?? 0));
                 }
                 // a click ends the peek instead of going to the window below
                 onClicked: root.peeking = false

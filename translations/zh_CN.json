@@ -91,5 +91,11 @@
     },
     "The key repeat keeps the opening alive. This is how long it stays after the last repeat, so a slow key repeat needs a higher value.": {
         "The key repeat keeps the opening alive. This is how long it stays after the last repeat, so a slow key repeat needs a higher value.": "按键重复会让圆窗一直开着。这是最后一次重复之后再留的时间，重复慢的话就调大一些。"
+    },
+    "Follow behind the windows": {
+        "Follow behind the windows": "在窗口后面也跟随"
+    },
+    "Takes the pointer position from niri instead of a sensor, so the hole also runs behind the windows, visible wherever they are see-through. Needs a niri that hands out the pointer position; without it nothing changes.": {
+        "Takes the pointer position from niri instead of a sensor, so the hole also runs behind the windows, visible wherever they are see-through. Needs a niri that hands out the pointer position; without it nothing changes.": "从 niri 取指针位置，而不是靠感应面，所以孔在窗口后面也会跟着走，在窗口透明的地方就能看到。需要会交出指针位置的 niri，没有的话不会有任何变化。"
     }
 }

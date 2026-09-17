@@ -191,6 +191,14 @@ PluginSettings {
         font.pixelSize: Theme.fontSizeSmall
     }
 
+    ToggleSetting {
+        visible: enableToggle.value && CompositorService.isNiri
+        settingKey: "followEverywhere"
+        label: I18n.trFor("xrayWallpaper", "Follow behind the windows")
+        description: I18n.trFor("xrayWallpaper", "Takes the pointer position from niri instead of a sensor, so the hole also runs behind the windows, visible wherever they are see-through. Needs a niri that hands out the pointer position; without it nothing changes.")
+        defaultValue: false
+    }
+
     StyledText {
         visible: enableToggle.value && CompositorService.isNiri
         width: parent ? parent.width : implicitWidth

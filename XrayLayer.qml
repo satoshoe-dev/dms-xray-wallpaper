@@ -17,6 +17,10 @@ Item {
     required property string imagePath
     // 0 stretch, 1 fit, 2 crop, like the DMS wallpaper
     required property int fill
+    // Where this screen starts in the global space, so the global pointer
+    // position lands in the right spot
+    property real originX: 0
+    property real originY: 0
     property bool lensOnly: false
 
     readonly property bool ready: picture.status === Image.Ready
@@ -42,8 +46,8 @@ Item {
         property real imageH: picture.implicitHeight
         property real screenW: width
         property real screenH: height
-        property real centerX: layer.ctl.holeX
-        property real centerY: layer.ctl.holeY
+        property real centerX: layer.ctl.holeX - layer.originX
+        property real centerY: layer.ctl.holeY - layer.originY
         property real radius: layer.ctl.radius
         property real softness: layer.ctl.softness
         property real open: layer.ctl.openAmount
