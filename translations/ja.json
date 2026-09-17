@@ -1,0 +1,95 @@
+{
+    "Show the second layer": {
+        "Show the second layer": "2 枚目のレイヤーを表示"
+    },
+    "Two wallpaper layers with a soft hole around the pointer. The hole shows the layer below.": {
+        "Two wallpaper layers with a soft hole around the pointer. The hole shows the layer below.": "2 枚の壁紙を重ね、ポインターのまわりに柔らかい穴を開けます。穴からは下のレイヤーが見えます。"
+    },
+    "Second image": {
+        "Second image": "2 枚目の画像"
+    },
+    "No image chosen yet.": {
+        "No image chosen yet.": "まだ画像を選んでいません。"
+    },
+    "Choose image": {
+        "Choose image": "画像を選ぶ"
+    },
+    "Remove": {
+        "Remove": "外す"
+    },
+    "Choose the second wallpaper": {
+        "Choose the second wallpaper": "2 枚目の壁紙を選ぶ"
+    },
+    "Second image on top": {
+        "Second image on top": "2 枚目の画像を上に"
+    },
+    "Off: your wallpaper stays on top and the hole shows the second image. On: the other way round.": {
+        "Off: your wallpaper stays on top and the hole shows the second image. On: the other way round.": "オフ: いまの壁紙が上に残り、穴から 2 枚目の画像が見えます。オン: その逆になります。"
+    },
+    "Hole size": {
+        "Hole size": "穴の大きさ"
+    },
+    "Soft edge": {
+        "Soft edge": "ふちのぼかし"
+    },
+    "How wide the transition between the two layers is.": {
+        "How wide the transition between the two layers is.": "2 枚のレイヤーの間をどれくらい広く渡すか。"
+    },
+    "Glowing ring": {
+        "Glowing ring": "光るリング"
+    },
+    "A ring of light along the edge of the hole. 0 leaves it out.": {
+        "A ring of light along the edge of the hole. 0 leaves it out.": "穴のふちに光の輪を置きます。0 でなくなります。"
+    },
+    "Ring color": {
+        "Ring color": "リングの色"
+    },
+    "Accent": {
+        "Accent": "アクセント"
+    },
+    "Text color": {
+        "Text color": "文字の色"
+    },
+    "Darken the upper layer": {
+        "Darken the upper layer": "上のレイヤーを暗くする"
+    },
+    "Darken the layer below": {
+        "Darken the layer below": "下のレイヤーを暗くする"
+    },
+    "Follow speed": {
+        "Follow speed": "追従の速さ"
+    },
+    "Pixels per second. Lower values let the hole glide after the pointer.": {
+        "Pixels per second. Lower values let the hole glide after the pointer.": "1 秒あたりのピクセル数。小さいほど穴がポインターを追ってゆっくり滑ります。"
+    },
+    "Follow on the desktop": {
+        "Follow on the desktop": "デスクトップで追従する"
+    },
+    "The hole follows the pointer while no window is under it. The sensor sits below the desktop widgets, so they keep their clicks.": {
+        "The hole follows the pointer while no window is under it. The sensor sits below the desktop widgets, so they keep their clicks.": "下にウィンドウがない間、穴はポインターを追います。センサーはデスクトップウィジェットの下にあるので、ウィジェットのクリックはそのまま残ります。"
+    },
+    "End peek mode after": {
+        "End peek mode after": "peek モードを終える時間"
+    },
+    "A click also ends it. 0 keeps it on until you switch it off.": {
+        "A click also ends it. 0 keeps it on until you switch it off.": "クリックでも終わります。0 なら自分で切るまで続きます。"
+    },
+    "On niri the layers scroll away with the workspaces unless they sit in the backdrop. The README has the layer rule for the namespace xray-wallpaper.": {
+        "On niri the layers scroll away with the workspaces unless they sit in the backdrop. The README has the layer rule for the namespace xray-wallpaper.": "niri では、レイヤーが backdrop に置かれていないとワークスペースと一緒に動きます。名前空間 xray-wallpaper 用のルールは README にあります。"
+    },
+    "Upper layer opacity": {
+        "Upper layer opacity": "上のレイヤーの不透明度"
+    },
+    "100 keeps the upper layer closed, so the picture shows in the hole alone. Lower values let it through everywhere.": {
+        "100 keeps the upper layer closed, so the picture shows in the hole alone. Lower values let it through everywhere.": "100 なら上のレイヤーは閉じたままで、画像は穴の中だけに見えます。小さくすると全体にも透けます。"
+    },
+    "Over a window the pointer belongs to that window. The peek mode puts a round opening above the windows instead. Put it on a key as a switch with 'dms ipc call xray peek toggle', or to show while the key is held with 'dms ipc call xray hold'.": {
+        "Over a window the pointer belongs to that window. The peek mode puts a round opening above the windows instead. Put it on a key as a switch with 'dms ipc call xray peek toggle', or to show while the key is held with 'dms ipc call xray hold'.": "ウィンドウの上ではポインターはそのウィンドウのものです。peek モードは代わりにウィンドウの上へ丸い窓を置きます。切り替えとして「dms ipc call xray peek toggle」を、押している間だけ見せるなら「dms ipc call xray hold」をキーに割り当ててください。"
+    },
+    "Hold mode: stay on after the key": {
+        "Hold mode: stay on after the key": "押している間: キーのあとの余韻"
+    },
+    "The key repeat keeps the opening alive. This is how long it stays after the last repeat, so a slow key repeat needs a higher value.": {
+        "The key repeat keeps the opening alive. This is how long it stays after the last repeat, so a slow key repeat needs a higher value.": "キーリピートが窓を開いたままにします。最後のリピートからこの時間だけ残るので、リピートが遅い設定なら大きめにしてください。"
+    }
+}

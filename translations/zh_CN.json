@@ -1,0 +1,95 @@
+{
+    "Show the second layer": {
+        "Show the second layer": "显示第二层"
+    },
+    "Two wallpaper layers with a soft hole around the pointer. The hole shows the layer below.": {
+        "Two wallpaper layers with a soft hole around the pointer. The hole shows the layer below.": "两层壁纸，指针周围有一个柔和的孔。孔里露出下面那一层。"
+    },
+    "Second image": {
+        "Second image": "第二张图片"
+    },
+    "No image chosen yet.": {
+        "No image chosen yet.": "还没有选图片。"
+    },
+    "Choose image": {
+        "Choose image": "选择图片"
+    },
+    "Remove": {
+        "Remove": "移除"
+    },
+    "Choose the second wallpaper": {
+        "Choose the second wallpaper": "选择第二张壁纸"
+    },
+    "Second image on top": {
+        "Second image on top": "第二张图片在上"
+    },
+    "Off: your wallpaper stays on top and the hole shows the second image. On: the other way round.": {
+        "Off: your wallpaper stays on top and the hole shows the second image. On: the other way round.": "关: 你的壁纸留在上面，孔里露出第二张图片。开: 反过来。"
+    },
+    "Hole size": {
+        "Hole size": "孔的大小"
+    },
+    "Soft edge": {
+        "Soft edge": "柔和边缘"
+    },
+    "How wide the transition between the two layers is.": {
+        "How wide the transition between the two layers is.": "两层之间过渡的宽度。"
+    },
+    "Glowing ring": {
+        "Glowing ring": "发光圆环"
+    },
+    "A ring of light along the edge of the hole. 0 leaves it out.": {
+        "A ring of light along the edge of the hole. 0 leaves it out.": "孔的边缘加一圈光。0 表示不要。"
+    },
+    "Ring color": {
+        "Ring color": "圆环颜色"
+    },
+    "Accent": {
+        "Accent": "强调色"
+    },
+    "Text color": {
+        "Text color": "文字颜色"
+    },
+    "Darken the upper layer": {
+        "Darken the upper layer": "压暗上面那一层"
+    },
+    "Darken the layer below": {
+        "Darken the layer below": "压暗下面那一层"
+    },
+    "Follow speed": {
+        "Follow speed": "跟随速度"
+    },
+    "Pixels per second. Lower values let the hole glide after the pointer.": {
+        "Pixels per second. Lower values let the hole glide after the pointer.": "每秒多少像素。数值越小，孔跟着指针滑得越慢。"
+    },
+    "Follow on the desktop": {
+        "Follow on the desktop": "在桌面上跟随"
+    },
+    "The hole follows the pointer while no window is under it. The sensor sits below the desktop widgets, so they keep their clicks.": {
+        "The hole follows the pointer while no window is under it. The sensor sits below the desktop widgets, so they keep their clicks.": "只要下面没有窗口，孔就跟着指针走。感应面在桌面小组件下方，小组件的点击照旧。"
+    },
+    "End peek mode after": {
+        "End peek mode after": "peek 模式在多久后结束"
+    },
+    "A click also ends it. 0 keeps it on until you switch it off.": {
+        "A click also ends it. 0 keeps it on until you switch it off.": "点击也会结束它。0 表示一直开着，直到你关掉。"
+    },
+    "On niri the layers scroll away with the workspaces unless they sit in the backdrop. The README has the layer rule for the namespace xray-wallpaper.": {
+        "On niri the layers scroll away with the workspaces unless they sit in the backdrop. The README has the layer rule for the namespace xray-wallpaper.": "在 niri 上，两层如果不放进 backdrop，就会跟着工作区一起滚走。命名空间 xray-wallpaper 的规则写在 README 里。"
+    },
+    "Upper layer opacity": {
+        "Upper layer opacity": "上层的不透明度"
+    },
+    "100 keeps the upper layer closed, so the picture shows in the hole alone. Lower values let it through everywhere.": {
+        "100 keeps the upper layer closed, so the picture shows in the hole alone. Lower values let it through everywhere.": "100 表示上层不透，图片只在孔里露出。数值越小，图片在整块屏幕上透出得越多。"
+    },
+    "Over a window the pointer belongs to that window. The peek mode puts a round opening above the windows instead. Put it on a key as a switch with 'dms ipc call xray peek toggle', or to show while the key is held with 'dms ipc call xray hold'.": {
+        "Over a window the pointer belongs to that window. The peek mode puts a round opening above the windows instead. Put it on a key as a switch with 'dms ipc call xray peek toggle', or to show while the key is held with 'dms ipc call xray hold'.": "在窗口上方，指针属于那个窗口。peek 模式会在窗口之上开一个圆窗。用「dms ipc call xray peek toggle」把它绑成开关，或者用「dms ipc call xray hold」在按住按键时显示。"
+    },
+    "Hold mode: stay on after the key": {
+        "Hold mode: stay on after the key": "按住模式: 松键后再留多久"
+    },
+    "The key repeat keeps the opening alive. This is how long it stays after the last repeat, so a slow key repeat needs a higher value.": {
+        "The key repeat keeps the opening alive. This is how long it stays after the last repeat, so a slow key repeat needs a higher value.": "按键重复会让圆窗一直开着。这是最后一次重复之后再留的时间，重复慢的话就调大一些。"
+    }
+}

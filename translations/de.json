@@ -1,0 +1,95 @@
+{
+    "Show the second layer": {
+        "Show the second layer": "Zweite Schicht anzeigen"
+    },
+    "Two wallpaper layers with a soft hole around the pointer. The hole shows the layer below.": {
+        "Two wallpaper layers with a soft hole around the pointer. The hole shows the layer below.": "Zwei Wallpaper-Schichten mit einem weichen Loch um den Zeiger. Im Loch zeigt sich die Schicht darunter."
+    },
+    "Second image": {
+        "Second image": "Zweites Bild"
+    },
+    "No image chosen yet.": {
+        "No image chosen yet.": "Noch kein Bild gewählt."
+    },
+    "Choose image": {
+        "Choose image": "Bild wählen"
+    },
+    "Remove": {
+        "Remove": "Entfernen"
+    },
+    "Choose the second wallpaper": {
+        "Choose the second wallpaper": "Zweites Wallpaper wählen"
+    },
+    "Second image on top": {
+        "Second image on top": "Zweites Bild oben"
+    },
+    "Off: your wallpaper stays on top and the hole shows the second image. On: the other way round.": {
+        "Off: your wallpaper stays on top and the hole shows the second image. On: the other way round.": "Aus: dein Wallpaper bleibt oben und das Loch zeigt das zweite Bild. Ein: umgekehrt."
+    },
+    "Hole size": {
+        "Hole size": "Größe des Lochs"
+    },
+    "Soft edge": {
+        "Soft edge": "Weiche Kante"
+    },
+    "How wide the transition between the two layers is.": {
+        "How wide the transition between the two layers is.": "Wie breit der Übergang zwischen den beiden Schichten ist."
+    },
+    "Glowing ring": {
+        "Glowing ring": "Leuchtender Ring"
+    },
+    "A ring of light along the edge of the hole. 0 leaves it out.": {
+        "A ring of light along the edge of the hole. 0 leaves it out.": "Ein Lichtring an der Kante des Lochs. 0 lässt ihn weg."
+    },
+    "Ring color": {
+        "Ring color": "Ringfarbe"
+    },
+    "Accent": {
+        "Accent": "Akzent"
+    },
+    "Text color": {
+        "Text color": "Schriftfarbe"
+    },
+    "Darken the upper layer": {
+        "Darken the upper layer": "Obere Schicht abdunkeln"
+    },
+    "Darken the layer below": {
+        "Darken the layer below": "Untere Schicht abdunkeln"
+    },
+    "Follow speed": {
+        "Follow speed": "Nachlauf"
+    },
+    "Pixels per second. Lower values let the hole glide after the pointer.": {
+        "Pixels per second. Lower values let the hole glide after the pointer.": "Pixel pro Sekunde. Kleinere Werte lassen das Loch dem Zeiger nachgleiten."
+    },
+    "Follow on the desktop": {
+        "Follow on the desktop": "Auf dem Schreibtisch folgen"
+    },
+    "The hole follows the pointer while no window is under it. The sensor sits below the desktop widgets, so they keep their clicks.": {
+        "The hole follows the pointer while no window is under it. The sensor sits below the desktop widgets, so they keep their clicks.": "Das Loch folgt dem Zeiger, solange kein Fenster darunter liegt. Der Fühler liegt unter den Schreibtisch-Widgets, die behalten also ihre Klicks."
+    },
+    "End peek mode after": {
+        "End peek mode after": "Peek-Modus beenden nach"
+    },
+    "A click also ends it. 0 keeps it on until you switch it off.": {
+        "A click also ends it. 0 keeps it on until you switch it off.": "Ein Klick beendet ihn auch. 0 lässt ihn an, bis du ihn abschaltest."
+    },
+    "On niri the layers scroll away with the workspaces unless they sit in the backdrop. The README has the layer rule for the namespace xray-wallpaper.": {
+        "On niri the layers scroll away with the workspaces unless they sit in the backdrop. The README has the layer rule for the namespace xray-wallpaper.": "Unter niri wandern die Schichten mit den Workspaces mit, solange sie nicht im Backdrop liegen. Die Regel für den Namensraum xray-wallpaper steht in der README."
+    },
+    "Upper layer opacity": {
+        "Upper layer opacity": "Deckkraft der oberen Schicht"
+    },
+    "100 keeps the upper layer closed, so the picture shows in the hole alone. Lower values let it through everywhere.": {
+        "100 keeps the upper layer closed, so the picture shows in the hole alone. Lower values let it through everywhere.": "100 hält die obere Schicht geschlossen, das Bild zeigt sich also nur im Loch. Kleinere Werte lassen es überall durch."
+    },
+    "Over a window the pointer belongs to that window. The peek mode puts a round opening above the windows instead. Put it on a key as a switch with 'dms ipc call xray peek toggle', or to show while the key is held with 'dms ipc call xray hold'.": {
+        "Over a window the pointer belongs to that window. The peek mode puts a round opening above the windows instead. Put it on a key as a switch with 'dms ipc call xray peek toggle', or to show while the key is held with 'dms ipc call xray hold'.": "Über einem Fenster gehört der Zeiger diesem Fenster. Der Peek-Modus legt stattdessen eine runde Öffnung über die Fenster. Leg ihn als Schalter auf eine Taste mit „dms ipc call xray peek toggle“, oder zum Anzeigen solange die Taste gedrückt ist mit „dms ipc call xray hold“."
+    },
+    "Hold mode: stay on after the key": {
+        "Hold mode: stay on after the key": "Halten: Nachlaufzeit nach der Taste"
+    },
+    "The key repeat keeps the opening alive. This is how long it stays after the last repeat, so a slow key repeat needs a higher value.": {
+        "The key repeat keeps the opening alive. This is how long it stays after the last repeat, so a slow key repeat needs a higher value.": "Die Tastenwiederholung hält die Öffnung offen. So lange bleibt sie nach der letzten Wiederholung, bei langsamer Wiederholung also höher stellen."
+    }
+}

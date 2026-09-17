@@ -1,0 +1,95 @@
+{
+    "Show the second layer": {
+        "Show the second layer": "Показывать второй слой"
+    },
+    "Two wallpaper layers with a soft hole around the pointer. The hole shows the layer below.": {
+        "Two wallpaper layers with a soft hole around the pointer. The hole shows the layer below.": "Два слоя обоев с мягким отверстием вокруг указателя. В отверстии видно нижний слой."
+    },
+    "Second image": {
+        "Second image": "Второе изображение"
+    },
+    "No image chosen yet.": {
+        "No image chosen yet.": "Изображение ещё не выбрано."
+    },
+    "Choose image": {
+        "Choose image": "Выбрать изображение"
+    },
+    "Remove": {
+        "Remove": "Убрать"
+    },
+    "Choose the second wallpaper": {
+        "Choose the second wallpaper": "Выберите вторые обои"
+    },
+    "Second image on top": {
+        "Second image on top": "Второе изображение сверху"
+    },
+    "Off: your wallpaper stays on top and the hole shows the second image. On: the other way round.": {
+        "Off: your wallpaper stays on top and the hole shows the second image. On: the other way round.": "Выключено: ваши обои остаются сверху, а в отверстии видно второе изображение. Включено: наоборот."
+    },
+    "Hole size": {
+        "Hole size": "Размер отверстия"
+    },
+    "Soft edge": {
+        "Soft edge": "Мягкий край"
+    },
+    "How wide the transition between the two layers is.": {
+        "How wide the transition between the two layers is.": "Насколько широк переход между слоями."
+    },
+    "Glowing ring": {
+        "Glowing ring": "Светящееся кольцо"
+    },
+    "A ring of light along the edge of the hole. 0 leaves it out.": {
+        "A ring of light along the edge of the hole. 0 leaves it out.": "Кольцо света по краю отверстия. 0 убирает его."
+    },
+    "Ring color": {
+        "Ring color": "Цвет кольца"
+    },
+    "Accent": {
+        "Accent": "Акцент"
+    },
+    "Text color": {
+        "Text color": "Цвет текста"
+    },
+    "Darken the upper layer": {
+        "Darken the upper layer": "Затемнить верхний слой"
+    },
+    "Darken the layer below": {
+        "Darken the layer below": "Затемнить нижний слой"
+    },
+    "Follow speed": {
+        "Follow speed": "Скорость слежения"
+    },
+    "Pixels per second. Lower values let the hole glide after the pointer.": {
+        "Pixels per second. Lower values let the hole glide after the pointer.": "Пикселей в секунду. Меньшие значения заставляют отверстие плавно догонять указатель."
+    },
+    "Follow on the desktop": {
+        "Follow on the desktop": "Следить на рабочем столе"
+    },
+    "The hole follows the pointer while no window is under it. The sensor sits below the desktop widgets, so they keep their clicks.": {
+        "The hole follows the pointer while no window is under it. The sensor sits below the desktop widgets, so they keep their clicks.": "Отверстие следует за указателем, пока под ним нет окна. Датчик лежит под виджетами рабочего стола, поэтому они сохраняют свои щелчки."
+    },
+    "End peek mode after": {
+        "End peek mode after": "Завершать режим peek через"
+    },
+    "A click also ends it. 0 keeps it on until you switch it off.": {
+        "A click also ends it. 0 keeps it on until you switch it off.": "Щелчок тоже его завершает. 0 оставляет его включённым, пока вы не выключите."
+    },
+    "On niri the layers scroll away with the workspaces unless they sit in the backdrop. The README has the layer rule for the namespace xray-wallpaper.": {
+        "On niri the layers scroll away with the workspaces unless they sit in the backdrop. The README has the layer rule for the namespace xray-wallpaper.": "В niri слои уезжают вместе с рабочими столами, пока они не лежат в backdrop. Правило для пространства имён xray-wallpaper есть в README."
+    },
+    "Upper layer opacity": {
+        "Upper layer opacity": "Непрозрачность верхнего слоя"
+    },
+    "100 keeps the upper layer closed, so the picture shows in the hole alone. Lower values let it through everywhere.": {
+        "100 keeps the upper layer closed, so the picture shows in the hole alone. Lower values let it through everywhere.": "100 держит верхний слой закрытым, и картинка видна только в отверстии. Меньшие значения пропускают её везде."
+    },
+    "Over a window the pointer belongs to that window. The peek mode puts a round opening above the windows instead. Put it on a key as a switch with 'dms ipc call xray peek toggle', or to show while the key is held with 'dms ipc call xray hold'.": {
+        "Over a window the pointer belongs to that window. The peek mode puts a round opening above the windows instead. Put it on a key as a switch with 'dms ipc call xray peek toggle', or to show while the key is held with 'dms ipc call xray hold'.": "Над окном указатель принадлежит этому окну. Режим peek вместо этого помещает круглое окошко поверх окон. Повесьте его на клавишу как переключатель командой «dms ipc call xray peek toggle» или как показ, пока клавиша нажата, командой «dms ipc call xray hold»."
+    },
+    "Hold mode: stay on after the key": {
+        "Hold mode: stay on after the key": "Удержание: сколько держится после клавиши"
+    },
+    "The key repeat keeps the opening alive. This is how long it stays after the last repeat, so a slow key repeat needs a higher value.": {
+        "The key repeat keeps the opening alive. This is how long it stays after the last repeat, so a slow key repeat needs a higher value.": "Повтор клавиши поддерживает окошко открытым. Это время после последнего повтора, поэтому при медленном повторе нужно значение побольше."
+    }
+}
