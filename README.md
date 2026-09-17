@@ -16,6 +16,8 @@ On the desktop the hole follows the pointer; move the pointer away from the desk
 
 Over a window the pointer belongs to that window, so there is a second way in: the peek mode. It opens a round view of the picture above all windows, follows the pointer everywhere and ends on a click, after a few seconds, or when you let go of the key you hold.
 
+There is a third way on niri, if your niri hands out the pointer position over its IPC socket: then "Follow behind the windows" takes the position from there and the hole keeps running behind the windows, seen wherever they are see-through. Where that is missing, the setting does nothing and the two ways above stay.
+
 "Upper layer opacity" lets the picture through everywhere, not only in the hole, which turns the whole thing into a blend of two pictures with a clear spot around the pointer. With "Second image on top" the picture covers the wallpaper instead and the hole shows the wallpaper. The hole size, the softness of its edge, an optional ring of light and how fast the hole follows can all be set.
 
 The picture is mapped like the DMS wallpaper, so stretch, fit and crop look the same as for your wallpaper.
@@ -58,6 +60,7 @@ Settings → Plugins → Xray Wallpaper
 | Darken the upper / lower layer | 0 % / 0 % |
 | Follow speed | 4000 px/s |
 | Follow on the desktop | on |
+| Follow behind the windows | off |
 | Hold mode: stay on after the key | 800 ms |
 | End peek mode after | 20 s |
 
@@ -82,6 +85,12 @@ binds {
 ```
 
 The hold bind works through the key repeat: every repeat pushes the end a little further, and shortly after you let go the view closes. If it flickers while you hold the key, raise "Hold mode: stay on after the key".
+
+## Following behind the windows
+
+Wayland delivers pointer motion only to the surface under the pointer, so no client can follow it once a window is in the way. niri knows the position but does not publish it.
+
+The patch that does publish it is small and sits in the IPC alone: a separate `PointerStream` request that sends `PointerMoved` events, so clients that do not ask never see them. It was sent to niri as a pull request; if it lands, "Follow behind the windows" starts working on its own. Until then the switch is there for anyone running niri with it.
 
 ## Translations
 

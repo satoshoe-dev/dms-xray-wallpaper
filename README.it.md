@@ -16,6 +16,8 @@ Sulla scrivania il foro segue il puntatore; porta il puntatore via dalla scrivan
 
 Sopra una finestra il puntatore appartiene a quella finestra, quindi c'è una seconda via: la modalità peek. Apre una vista rotonda dell'immagine al di sopra di tutte le finestre, segue il puntatore in ogni punto e finisce con un clic, dopo qualche secondo, oppure quando lasci il tasto che tieni premuto.
 
+Su niri c'è una terza via, se il tuo niri fornisce la posizione del puntatore sul suo socket IPC: allora "Seguire dietro le finestre" prende la posizione da lì e il foro continua a correre dietro le finestre, visibile dove sono trasparenti. Dove questo manca, l'impostazione non fa nulla e restano le due vie di sopra.
+
 "Opacità del livello sopra" lascia passare l'immagine ovunque, non solo nel foro, e il tutto diventa una miscela di due immagini con un punto nitido attorno al puntatore. Con "Seconda immagine sopra" è invece l'immagine a coprire lo sfondo e il foro mostra lo sfondo. La dimensione del foro, la morbidezza del suo bordo, un anello di luce se lo vuoi e la velocità con cui il foro insegue si possono impostare tutti.
 
 L'immagine viene mappata come lo sfondo DMS, quindi stiramento, adattamento e taglio hanno lo stesso aspetto del tuo sfondo.
@@ -58,6 +60,7 @@ Impostazioni → Plugin → Xray Wallpaper
 | Scurisci il livello sopra / sotto | 0 % / 0 % |
 | Velocità di inseguimento | 4000 px/s |
 | Segui sulla scrivania | acceso |
+| Seguire dietro le finestre | spento |
 | Tenere premuto: tempo dopo il tasto | 800 ms |
 | Termina la modalità peek dopo | 20 s |
 
@@ -82,6 +85,12 @@ binds {
 ```
 
 La scorciatoia da tenere premuta lavora attraverso la ripetizione del tasto: ogni ripetizione sposta la fine un po' più in là, e poco dopo che lasci, la vista si chiude. Se sfarfalla mentre tieni premuto il tasto, alza "Tenere premuto: tempo dopo il tasto".
+
+## Seguire dietro le finestre
+
+Wayland consegna i movimenti del puntatore solo alla superficie sotto il puntatore, quindi nessun client può seguirlo appena c'è una finestra di mezzo. niri conosce la posizione ma non la pubblica.
+
+La patch che la pubblica è piccola e sta tutta nell'IPC: una richiesta `PointerStream` a parte che manda eventi `PointerMoved`, così i client che non la chiedono non li vedono mai. È andata a niri come pull request; se viene accettata, "Seguire dietro le finestre" si mette a funzionare da sé. Fino ad allora l'interruttore è lì per chi fa girare niri con la patch.
 
 ## Traduzioni
 

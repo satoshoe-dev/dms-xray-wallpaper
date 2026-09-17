@@ -16,6 +16,8 @@ Sur le bureau, le trou suit le pointeur ; éloigne le pointeur du bureau et le t
 
 Au-dessus d'une fenêtre, le pointeur appartient à cette fenêtre, il y a donc une deuxième entrée : le mode peek. Il ouvre une vue ronde de l'image par-dessus toutes les fenêtres, suit le pointeur partout et se termine sur un clic, après quelques secondes, ou quand tu relâches la touche que tu tiens.
 
+Sous niri il y a une troisième entrée, si ton niri donne la position du pointeur par son socket IPC : « Suivre derrière les fenêtres » y prend alors la position et le trou continue de courir derrière les fenêtres, visible partout où elles sont translucides. Là où ça manque, le réglage ne fait rien et les deux entrées ci-dessus restent.
+
 « Opacité de la couche du dessus » laisse passer l'image partout, pas seulement dans le trou, ce qui donne un mélange de deux images avec un endroit net autour du pointeur. Avec « Deuxième image au-dessus », c'est l'image qui recouvre le fond d'écran et le trou montre le fond d'écran. La taille du trou, la douceur de son bord, un anneau de lumière si tu en veux un et la vitesse de suivi du trou se règlent tous.
 
 L'image est placée comme le fond d'écran DMS, l'étirement, l'ajustement et le recadrage ont donc la même allure que pour ton fond d'écran.
@@ -58,6 +60,7 @@ Paramètres → Plugins → Xray Wallpaper
 | Assombrir la couche du dessus / du dessous | 0 % / 0 % |
 | Vitesse de suivi | 4000 px/s |
 | Suivre sur le bureau | activé |
+| Suivre derrière les fenêtres | désactivé |
 | Maintien : délai après la touche | 800 ms |
 | Terminer le mode peek après | 20 s |
 
@@ -82,6 +85,12 @@ binds {
 ```
 
 Le raccourci à maintenir passe par la répétition de touche : chaque répétition repousse un peu la fin, et peu après que tu relâches, la vue se referme. Si ça scintille pendant que tu tiens la touche, augmente « Maintien : délai après la touche ».
+
+## Suivre derrière les fenêtres
+
+Wayland ne livre les mouvements du pointeur qu'à la surface sous le pointeur, aucun client ne peut donc le suivre dès qu'une fenêtre est dans le chemin. niri connaît la position mais ne la publie pas.
+
+Le patch qui la publie est petit et tient dans l'IPC seul : une requête `PointerStream` à part qui envoie des événements `PointerMoved`, si bien que les clients qui ne la demandent pas ne les voient jamais. Il est parti chez niri en pull request ; s'il est accepté, « Suivre derrière les fenêtres » se met à marcher tout seul. D'ici là, l'interrupteur est là pour ceux qui font tourner niri avec.
 
 ## Traductions
 

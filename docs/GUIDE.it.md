@@ -97,11 +97,23 @@ binds {
 
 Questo si appoggia alla ripetizione del tasto: ogni ripetizione sposta la fine un po' più in là, e poco dopo che lasci, la vista si chiude. Se sfarfalla mentre tieni premuto il tasto, alza "Tenere premuto: tempo dopo il tasto" nelle impostazioni.
 
-## 10. Scambiare i livelli
+## 10. Seguire dietro le finestre (niri con il flusso del puntatore)
+
+Wayland passa i movimenti del puntatore solo alla superficie sotto il puntatore, ed è per questo che i passi 5 e 9 esistono. Se il tuo niri pubblica la posizione del puntatore sul suo socket IPC, il plugin può prenderla da lì:
+
+```sh
+niri msg pointer-stream      # prints positions while you move the mouse
+```
+
+Se compaiono delle posizioni, accendi "Seguire dietro le finestre". Il foro corre allora dappertutto, anche dietro le finestre, e si vede dove una finestra è trasparente. Se il comando è sconosciuto, il tuo niri non ha il flusso e l'interruttore resta senza effetto.
+
+![Il foro dietro una finestra trasparente](images/08-behind.png)
+
+## 11. Scambiare i livelli
 
 Con "Seconda immagine sopra" la tua immagine diventa il livello sopra e il foro mostra lo sfondo DMS. Utile se la seconda immagine è quella che vuoi vedere per la maggior parte del tempo, per esempio una versione scura del tuo sfondo con l'originale chiaro sotto.
 
-## 11. Comandarlo da script
+## 12. Comandarlo da script
 
 ```sh
 dms ipc call xray at 1280 800     # hole at a fixed spot
@@ -119,5 +131,7 @@ dms ipc call xray status
 **Non cambia proprio nulla.** Non è ancora impostata nessuna seconda immagine, oppure il file non c'è più; la pagina delle impostazioni mostra il percorso che usa.
 
 **Un widget della scrivania non reagisce più.** Il sensore sta sotto i widget, quindi non dovrebbe succedere. Se succede, spegni "Segui sulla scrivania" e usa la modalità peek.
+
+**"Seguire dietro le finestre" non cambia nulla.** Il niri in esecuzione non pubblica la posizione del puntatore. `dms ipc call xray status` dice in quel caso `"stream":"refused"`, e il plugin resta al sensore e alla modalità peek.
 
 **Il tasto tenuto premuto sfarfalla.** La ripetizione del tasto è più lenta del tempo sotto "Tenere premuto: tempo dopo il tasto". Alzalo, oppure abbassa il ritardo di ripetizione della tua tastiera.

@@ -97,11 +97,23 @@ binds {
 
 Este apoia-se na repetição da tecla: cada repetição empurra o fim um pouco mais para a frente, e pouco depois de largares a vista fecha-se. Se tremer enquanto tens a tecla premida, aumenta "Manter: tempo depois da tecla" nas definições.
 
-## 10. Trocar as camadas
+## 10. Seguir por trás das janelas (niri com o fluxo do ponteiro)
+
+O Wayland só entrega o movimento do ponteiro à superfície que está por baixo dele, e é por isso que os passos 5 e 9 existem. Se o teu niri publicar a posição do ponteiro pelo seu socket IPC, o plugin pode tirá-la de lá:
+
+```sh
+niri msg pointer-stream      # prints positions while you move the mouse
+```
+
+Se aparecerem posições, liga "Seguir por trás das janelas". O buraco passa então a correr em todo o lado, também por trás das janelas, e mostra-se onde uma janela for translúcida. Se o comando for desconhecido, o teu niri não tem o fluxo e o interruptor fica sem efeito.
+
+![O buraco por trás de uma janela translúcida](images/08-behind.png)
+
+## 11. Trocar as camadas
 
 Com "Segunda imagem em cima" a tua imagem passa a ser a camada de cima e o buraco mostra o papel de parede do DMS. Útil se a segunda imagem for a que queres ver a maior parte do tempo, por exemplo uma versão escura do teu papel de parede com o original claro por baixo.
 
-## 11. Usá-lo em scripts
+## 12. Usá-lo em scripts
 
 ```sh
 dms ipc call xray at 1280 800     # hole at a fixed spot
@@ -119,5 +131,7 @@ dms ipc call xray status
 **Não muda nada.** Ainda não está definida nenhuma segunda imagem, ou o ficheiro desapareceu; a página de definições mostra o caminho que usa.
 
 **Um widget do ambiente de trabalho deixou de reagir.** O sensor fica sob os widgets, por isso não devia acontecer. Se acontecer, desliga "Seguir no ambiente de trabalho" e usa o modo peek.
+
+**"Seguir por trás das janelas" não muda nada.** O niri em execução não publica a posição do ponteiro. `dms ipc call xray status` diz nesse caso `"stream":"refused"`, e o plugin fica-se pelo sensor e pelo modo peek.
 
 **A tecla premida treme.** A repetição da tecla é mais lenta do que o tempo em "Manter: tempo depois da tecla". Aumenta-o, ou reduz o atraso de repetição do teu teclado.

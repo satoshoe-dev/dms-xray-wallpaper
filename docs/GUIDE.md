@@ -97,11 +97,23 @@ binds {
 
 This one rides on the key repeat: every repeat pushes the end a little further, and shortly after you let go the view closes. If it flickers while you hold the key, raise "Hold mode: stay on after the key" in the settings.
 
-## 10. Swap the layers
+## 10. Follow behind the windows (niri with the pointer stream)
+
+Wayland hands pointer motion only to the surface under the pointer, which is why steps 5 and 9 exist at all. If your niri publishes the pointer position over its IPC socket, the plugin can take it from there:
+
+```sh
+niri msg pointer-stream      # prints positions while you move the mouse
+```
+
+If that prints positions, switch on "Follow behind the windows". The hole then runs everywhere, also behind windows, and shows up wherever a window is see-through. If the command is unknown, your niri does not have the stream and the switch stays without effect.
+
+![The hole behind a see-through window](images/08-behind.png)
+
+## 11. Swap the layers
 
 With "Second image on top" your picture becomes the upper layer and the hole shows the DMS wallpaper. Useful if the second picture is the one you want to see most of the time, for example a dark version of your wallpaper with the bright original underneath.
 
-## 11. Script it
+## 12. Script it
 
 ```sh
 dms ipc call xray at 1280 800     # hole at a fixed spot
@@ -119,5 +131,7 @@ dms ipc call xray status
 **Nothing changes at all.** No second picture is set yet, or the file is gone; the settings page shows the path it uses.
 
 **A desktop widget stops reacting.** The sensor sits below the widgets, so this should not happen. If it does, switch "Follow on the desktop" off and use the peek mode instead.
+
+**"Follow behind the windows" changes nothing.** The running niri does not publish the pointer position. `dms ipc call xray status` says `"stream":"refused"` in that case, and the plugin keeps to the sensor and the peek mode.
 
 **The hold key flickers.** The key repeat is slower than the time under "Hold mode: stay on after the key". Raise it, or lower the repeat delay of your keyboard.

@@ -16,6 +16,8 @@ En el escritorio el agujero sigue al puntero; aparta el puntero del escritorio y
 
 Sobre una ventana el puntero pertenece a esa ventana, así que hay una segunda vía: el modo peek. Abre una vista redonda de la imagen por encima de todas las ventanas, sigue al puntero en cualquier sitio y termina con un clic, a los pocos segundos, o cuando sueltas la tecla que mantienes pulsada.
 
+En niri hay una tercera vía, si tu niri entrega la posición del puntero por su socket IPC: entonces «Seguir detrás de las ventanas» toma la posición de ahí y el agujero sigue corriendo detrás de las ventanas, visible allí donde son translúcidas. Donde eso falta, el ajuste no hace nada y quedan las dos vías de arriba.
+
 «Opacidad de la capa superior» deja pasar la imagen por todas partes, no solo por el agujero, con lo que el conjunto se convierte en una mezcla de dos imágenes con un punto despejado alrededor del puntero. Con «Segunda imagen arriba» la imagen tapa el fondo y el agujero muestra el fondo. El tamaño del agujero, la suavidad de su borde, un anillo de luz opcional y la rapidez con la que el agujero sigue al puntero se pueden ajustar.
 
 La imagen se mapea igual que el fondo de DMS, así que estirar, ajustar y recortar se ven como en tu fondo.
@@ -58,6 +60,7 @@ Ajustes → Plugins → Xray Wallpaper
 | Oscurecer la capa superior / inferior | 0 % / 0 % |
 | Velocidad de seguimiento | 4000 px/s |
 | Seguir en el escritorio | activado |
+| Seguir detrás de las ventanas | desactivado |
 | Mantener: tiempo tras soltar la tecla | 800 ms |
 | Terminar el modo peek tras | 20 s |
 
@@ -82,6 +85,12 @@ binds {
 ```
 
 La combinación de mantener pulsada se apoya en la repetición de tecla: cada repetición empuja el final un poco más allá, y poco después de soltar, la vista se cierra. Si parpadea mientras mantienes la tecla, sube «Mantener: tiempo tras soltar la tecla».
+
+## Seguir detrás de las ventanas
+
+Wayland entrega el movimiento del puntero solo a la superficie que está debajo de él, así que ningún cliente puede seguirlo en cuanto hay una ventana por medio. niri conoce la posición, pero no la publica.
+
+El parche que sí la publica es pequeño y se queda en el IPC: una petición `PointerStream` aparte que envía eventos `PointerMoved`, de modo que los clientes que no la piden nunca los ven. Se envió a niri como pull request; si entra, «Seguir detrás de las ventanas» empieza a funcionar por sí solo. Hasta entonces el interruptor está ahí para quien use un niri que lo lleve.
 
 ## Traducciones
 

@@ -97,11 +97,23 @@ binds {
 
 Der arbeitet über die Tastenwiederholung: jede Wiederholung schiebt das Ende ein Stück weiter, und kurz nachdem du loslässt, schließt sich die Ansicht. Wenn es beim Halten flackert, stell „Halten: Nachlaufzeit nach der Taste“ in den Einstellungen höher.
 
-## 10. Die Schichten tauschen
+## 10. Hinter den Fenstern folgen (niri mit dem Zeiger-Strom)
+
+Wayland gibt Zeigerbewegungen nur an die Fläche unter dem Zeiger weiter, darum gibt es Schritt 5 und Schritt 9 überhaupt. Wenn dein niri die Zeigerposition über seinen IPC-Socket herausgibt, kann das Plugin sie von dort nehmen:
+
+```sh
+niri msg pointer-stream      # prints positions while you move the mouse
+```
+
+Wenn da Positionen erscheinen, schalte „Hinter den Fenstern folgen“ ein. Das Loch läuft dann überall mit, auch hinter Fenstern, und zeigt sich dort, wo ein Fenster durchscheinend ist. Ist der Befehl unbekannt, hat dein niri den Strom nicht, und der Schalter bleibt ohne Wirkung.
+
+![Das Loch hinter einem durchscheinenden Fenster](images/08-behind.png)
+
+## 11. Die Schichten tauschen
 
 Mit „Zweites Bild oben“ wird dein Bild die obere Schicht und das Loch zeigt das DMS-Wallpaper. Nützlich, wenn das zweite Bild das ist, das du die meiste Zeit sehen willst, zum Beispiel eine dunkle Fassung deines Wallpapers mit dem hellen Original darunter.
 
-## 11. Per Skript steuern
+## 12. Per Skript steuern
 
 ```sh
 dms ipc call xray at 1280 800     # hole at a fixed spot
@@ -119,5 +131,7 @@ dms ipc call xray status
 **Es ändert sich überhaupt nichts.** Es ist noch kein zweites Bild gesetzt, oder die Datei ist weg; die Einstellungsseite zeigt den Pfad, den sie benutzt.
 
 **Ein Schreibtisch-Widget reagiert nicht mehr.** Der Fühler liegt unter den Widgets, das sollte also nicht passieren. Wenn doch, schalte „Auf dem Schreibtisch folgen“ aus und nimm stattdessen den Peek-Modus.
+
+**„Hinter den Fenstern folgen“ ändert nichts.** Das laufende niri gibt die Zeigerposition nicht heraus. `dms ipc call xray status` sagt dann `"stream":"refused"`, und das Plugin bleibt beim Fühler und beim Peek-Modus.
 
 **Die Haltetaste flackert.** Die Tastenwiederholung ist langsamer als die Zeit unter „Halten: Nachlaufzeit nach der Taste“. Stell sie höher, oder verkürze die Verzögerung der Tastenwiederholung deiner Tastatur.

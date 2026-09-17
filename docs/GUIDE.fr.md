@@ -97,11 +97,23 @@ binds {
 
 Celle-ci s'appuie sur la répétition de touche : chaque répétition repousse un peu la fin, et peu après que tu relâches, la vue se referme. Si ça scintille pendant que tu tiens la touche, augmente « Maintien : délai après la touche » dans les paramètres.
 
-## 10. Échanger les couches
+## 10. Suivre derrière les fenêtres (niri avec le flux du pointeur)
+
+Wayland ne transmet les mouvements du pointeur qu'à la surface sous le pointeur, et c'est pour ça que les étapes 5 et 9 existent. Si ton niri publie la position du pointeur par son socket IPC, le plugin peut la prendre de là :
+
+```sh
+niri msg pointer-stream      # prints positions while you move the mouse
+```
+
+Si des positions s'affichent, active « Suivre derrière les fenêtres ». Le trou court alors partout, aussi derrière les fenêtres, et se montre là où une fenêtre est translucide. Si la commande est inconnue, ton niri n'a pas le flux et l'interrupteur reste sans effet.
+
+![Le trou derrière une fenêtre translucide](images/08-behind.png)
+
+## 11. Échanger les couches
 
 Avec « Deuxième image au-dessus », ton image devient la couche du dessus et le trou montre le fond d'écran DMS. Pratique si la deuxième image est celle que tu veux voir la plupart du temps, par exemple une version sombre de ton fond d'écran avec l'original clair en dessous.
 
-## 11. Le piloter par script
+## 12. Le piloter par script
 
 ```sh
 dms ipc call xray at 1280 800     # hole at a fixed spot
@@ -119,5 +131,7 @@ dms ipc call xray status
 **Rien ne change du tout.** Aucune deuxième image n'est encore définie, ou le fichier a disparu ; la page de paramètres affiche le chemin qu'elle utilise.
 
 **Un widget du bureau ne réagit plus.** Le capteur est sous les widgets, cela ne devrait donc pas arriver. Si ça arrive, désactive « Suivre sur le bureau » et utilise le mode peek à la place.
+
+**« Suivre derrière les fenêtres » ne change rien.** Le niri qui tourne ne publie pas la position du pointeur. `dms ipc call xray status` dit alors `"stream":"refused"`, et le plugin s'en tient au capteur et au mode peek.
 
 **La touche maintenue scintille.** La répétition de touche est plus lente que le temps sous « Maintien : délai après la touche ». Augmente-le, ou réduis le délai de répétition de ton clavier.

@@ -16,6 +16,8 @@ Auf dem Schreibtisch folgt das Loch dem Zeiger; nimmst du den Zeiger vom Schreib
 
 Über einem Fenster gehört der Zeiger diesem Fenster, darum gibt es einen zweiten Weg hinein: den Peek-Modus. Er öffnet eine runde Ansicht des Bildes über allen Fenstern, folgt dem Zeiger überall und endet mit einem Klick, nach einigen Sekunden oder wenn du die gehaltene Taste loslässt.
 
+Unter niri gibt es einen dritten Weg, wenn dein niri die Zeigerposition über seinen IPC-Socket herausgibt: dann nimmt „Hinter den Fenstern folgen“ die Position von dort, und das Loch läuft hinter den Fenstern weiter mit, zu sehen überall dort, wo sie durchscheinend sind. Fehlt das, tut die Einstellung nichts, und es bleibt bei den beiden Wegen oben.
+
 „Deckkraft der oberen Schicht“ lässt das Bild überall durch, nicht nur im Loch; daraus wird eine Mischung aus zwei Bildern mit einer klaren Stelle um den Zeiger. Mit „Zweites Bild oben“ deckt das Bild stattdessen das Wallpaper ab und das Loch zeigt das Wallpaper. Die Größe des Lochs, die Weichheit seiner Kante, ein Lichtring nach Wunsch und wie schnell das Loch folgt lassen sich alle einstellen.
 
 Das Bild wird abgebildet wie das DMS-Wallpaper, Strecken, Einpassen und Beschneiden sehen also aus wie bei deinem Wallpaper.
@@ -58,6 +60,7 @@ Einstellungen → Plugins → Xray Wallpaper
 | Obere / untere Schicht abdunkeln | 0 % / 0 % |
 | Nachlauf | 4000 px/s |
 | Auf dem Schreibtisch folgen | ein |
+| Hinter den Fenstern folgen | aus |
 | Halten: Nachlaufzeit nach der Taste | 800 ms |
 | Peek-Modus beenden nach | 20 s |
 
@@ -82,6 +85,12 @@ binds {
 ```
 
 Die Haltebindung arbeitet über die Tastenwiederholung: jede Wiederholung schiebt das Ende ein Stück weiter, und kurz nachdem du loslässt, schließt sich die Ansicht. Wenn es beim Halten flackert, stell „Halten: Nachlaufzeit nach der Taste“ höher.
+
+## Hinter den Fenstern folgen
+
+Wayland liefert Zeigerbewegungen nur an die Fläche unter dem Zeiger, kein Programm kann ihm also folgen, sobald ein Fenster dazwischen liegt. niri kennt die Position, gibt sie aber nicht heraus.
+
+Der Patch, der sie herausgibt, ist klein und steckt allein im IPC: eine eigene `PointerStream`-Anfrage, die `PointerMoved`-Ereignisse schickt, Programme, die nicht danach fragen, bekommen sie also nie zu sehen. Er ging als Pull Request an niri; wenn er ankommt, fängt „Hinter den Fenstern folgen“ von selbst an zu arbeiten. Bis dahin ist der Schalter für alle da, die niri damit laufen lassen.
 
 ## Übersetzungen
 
