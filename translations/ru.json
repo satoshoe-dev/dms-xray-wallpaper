@@ -95,7 +95,7 @@
     "Follow behind the windows": {
         "Follow behind the windows": "Следовать за окнами"
     },
-    "Takes the pointer position from niri instead of a sensor, so the hole also runs behind the windows, visible wherever they are see-through. Needs a niri that hands out the pointer position; without it nothing changes.": {
-        "Takes the pointer position from niri instead of a sensor, so the hole also runs behind the windows, visible wherever they are see-through. Needs a niri that hands out the pointer position; without it nothing changes.": "Берёт положение указателя у niri, а не у датчика, поэтому отверстие идёт и за окнами и видно везде, где они прозрачные. Нужен niri, который отдаёт положение указателя; без этого ничего не меняется."
+    "Takes the pointer position from niri instead of a sensor, so the hole also runs behind the windows, visible wherever they are see-through. Needs niri built with the pointer stream patch from the README. With a normal niri nothing changes.": {
+        "Takes the pointer position from niri instead of a sensor, so the hole also runs behind the windows, visible wherever they are see-through. Needs niri built with the pointer stream patch from the README. With a normal niri nothing changes.": "Берёт положение указателя у niri, а не у датчика, поэтому отверстие идёт и за окнами и видно везде, где они прозрачные. Нужен niri, собранный с патчем потока указателя из README. С обычным niri ничего не меняется."
     }
 }

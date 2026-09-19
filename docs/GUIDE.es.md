@@ -4,15 +4,21 @@
 
 ## 1. Instalar el plugin
 
-Clona el repositorio en tu carpeta de plugins de DMS:
+Desde el registro de complementos:
 
 ```sh
-git clone https://github.com/21Rebel/dms-xray-wallpaper ~/.config/DankMaterialShell/plugins/XrayWallpaper
+dms plugins install xrayWallpaper
+```
+
+O clona el repositorio en tu carpeta de plugins de DMS:
+
+```sh
+git clone https://github.com/satoshoe-dev/dms-xray-wallpaper ~/.config/DankMaterialShell/plugins/XrayWallpaper
 ```
 
 ## 2. Activarlo
 
-Abre Ajustes → Plugins. Xray Wallpaper aparece en la lista. Actívalo.
+Abre Ajustes → Complementos. Xray Wallpaper aparece en la lista. Actívalo.
 
 ![Lista de plugins con Xray Wallpaper](images/01-plugin-list.png)
 
@@ -97,15 +103,15 @@ binds {
 
 Este se apoya en la repetición de tecla: cada repetición empuja el final un poco más allá, y poco después de soltar, la vista se cierra. Si parpadea mientras mantienes la tecla, sube «Mantener: tiempo tras soltar la tecla» en los ajustes.
 
-## 10. Seguir detrás de las ventanas (niri con el flujo del puntero)
+## 10. Seguir detrás de las ventanas (solo con niri parcheado)
 
-Wayland entrega el movimiento del puntero solo a la superficie que está debajo de él, y por eso existen los pasos 5 y 9. Si tu niri publica la posición del puntero por su socket IPC, el plugin puede tomarla de ahí:
+Wayland entrega el movimiento del puntero solo a la superficie que está debajo de él, y por eso existen los pasos 5 y 9. niri conoce la posición, pero no la entrega. Un parche mío, que no forma parte de niri, añade un flujo del puntero al socket IPC de niri, y el plugin puede tomar la posición de ahí. Con un niri normal, sáltate este paso; todo lo demás de esta guía funciona sin el parche. Para comprobar qué niri tienes:
 
 ```sh
 niri msg pointer-stream      # prints positions while you move the mouse
 ```
 
-Si eso imprime posiciones, activa «Seguir detrás de las ventanas». Entonces el agujero corre por todas partes, también detrás de las ventanas, y aparece allí donde una ventana es translúcida. Si el comando es desconocido, tu niri no tiene el flujo y el interruptor se queda sin efecto.
+Si eso imprime posiciones, activa «Seguir detrás de las ventanas». Entonces el agujero corre por todas partes, también detrás de las ventanas, y aparece allí donde una ventana es translúcida. Si niri no conoce el comando, tu niri no tiene el flujo del puntero y el interruptor se queda sin efecto.
 
 ![El agujero detrás de una ventana translúcida](images/08-behind.png)
 
@@ -124,14 +130,26 @@ dms ipc call xray status
 
 ## Solución de problemas
 
-**Las capas se desplazan cuando cambio de espacio de trabajo.** Falta la regla de capa de niri del paso 3.
+### Las capas se desplazan cuando cambio de espacio de trabajo
 
-**El agujero no sigue en el escritorio.** «Seguir en el escritorio» está desactivado, o una ventana cubre ese sitio. El sensor solo ve el puntero donde el escritorio está libre.
+Falta la regla de capa de niri del paso 3.
 
-**No cambia nada de nada.** Todavía no hay segunda imagen puesta, o el archivo ya no está; la página de ajustes muestra la ruta que usa.
+### El agujero no sigue en el escritorio
 
-**Un widget del escritorio deja de reaccionar.** El sensor queda debajo de los widgets, así que esto no debería pasar. Si pasa, desactiva «Seguir en el escritorio» y usa el modo peek.
+«Seguir en el escritorio» está desactivado, o una ventana cubre ese sitio. El sensor solo ve el puntero donde el escritorio está libre.
 
-**«Seguir detrás de las ventanas» no cambia nada.** El niri en marcha no publica la posición del puntero. En ese caso `dms ipc call xray status` dice `"stream":"refused"`, y el plugin se queda con el sensor y el modo peek.
+### No cambia nada de nada
 
-**La tecla mantenida parpadea.** La repetición de tecla es más lenta que el tiempo de «Mantener: tiempo tras soltar la tecla». Súbelo, o baja el retardo de repetición de tu teclado.
+Todavía no hay segunda imagen puesta, o el archivo ya no está; la página de ajustes muestra la ruta que usa.
+
+### Un widget del escritorio deja de reaccionar
+
+El sensor queda debajo de los widgets, así que esto no debería pasar. Si pasa, desactiva «Seguir en el escritorio» y usa el modo peek.
+
+### «Seguir detrás de las ventanas» no cambia nada
+
+El niri en marcha está compilado sin el parche del flujo del puntero. En ese caso `dms ipc call xray status` dice `"stream":"refused"`, y el plugin se queda con el sensor y el modo peek.
+
+### La tecla mantenida parpadea
+
+La repetición de tecla es más lenta que el tiempo de «Mantener: tiempo tras soltar la tecla». Súbelo, o baja el retardo de repetición de tu teclado.

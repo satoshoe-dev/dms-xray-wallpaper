@@ -4,10 +4,16 @@
 
 ## 1. Install the plugin
 
-Clone the repository into your DMS plugin folder:
+From the plugin registry:
 
 ```sh
-git clone https://github.com/21Rebel/dms-xray-wallpaper ~/.config/DankMaterialShell/plugins/XrayWallpaper
+dms plugins install xrayWallpaper
+```
+
+Or clone the repository into your DMS plugin folder:
+
+```sh
+git clone https://github.com/satoshoe-dev/dms-xray-wallpaper ~/.config/DankMaterialShell/plugins/XrayWallpaper
 ```
 
 ## 2. Enable it
@@ -97,15 +103,15 @@ binds {
 
 This one rides on the key repeat: every repeat pushes the end a little further, and shortly after you let go the view closes. If it flickers while you hold the key, raise "Hold mode: stay on after the key" in the settings.
 
-## 10. Follow behind the windows (niri with the pointer stream)
+## 10. Follow behind the windows (patched niri only)
 
-Wayland hands pointer motion only to the surface under the pointer, which is why steps 5 and 9 exist at all. If your niri publishes the pointer position over its IPC socket, the plugin can take it from there:
+Wayland hands pointer motion only to the surface under the pointer, which is why steps 5 and 9 exist at all. niri knows the position but does not hand it out. A patch of mine, which is not part of niri, adds a pointer stream to niri's IPC socket, and the plugin can take the position from there. With a normal niri, skip this step; everything else in this guide works without the patch. To check which niri you run:
 
 ```sh
 niri msg pointer-stream      # prints positions while you move the mouse
 ```
 
-If that prints positions, switch on "Follow behind the windows". The hole then runs everywhere, also behind windows, and shows up wherever a window is see-through. If the command is unknown, your niri does not have the stream and the switch stays without effect.
+If that prints positions, switch on "Follow behind the windows". The hole then runs everywhere, also behind windows, and shows up wherever a window is see-through. If niri does not know the command, your niri has no pointer stream and the switch stays without effect.
 
 ![The hole behind a see-through window](images/08-behind.png)
 
@@ -124,14 +130,26 @@ dms ipc call xray status
 
 ## Troubleshooting
 
-**The layers scroll away when I switch workspaces.** The niri layer rule from step 3 is missing.
+### The layers scroll away when I switch workspaces
 
-**The hole does not follow on the desktop.** "Follow on the desktop" is off, or a window covers the spot. The sensor only sees the pointer where the desktop is free.
+The niri layer rule from step 3 is missing.
 
-**Nothing changes at all.** No second picture is set yet, or the file is gone; the settings page shows the path it uses.
+### The hole does not follow on the desktop
 
-**A desktop widget stops reacting.** The sensor sits below the widgets, so this should not happen. If it does, switch "Follow on the desktop" off and use the peek mode instead.
+"Follow on the desktop" is off, or a window covers the spot. The sensor only sees the pointer where the desktop is free.
 
-**"Follow behind the windows" changes nothing.** The running niri does not publish the pointer position. `dms ipc call xray status` says `"stream":"refused"` in that case, and the plugin keeps to the sensor and the peek mode.
+### Nothing changes at all
 
-**The hold key flickers.** The key repeat is slower than the time under "Hold mode: stay on after the key". Raise it, or lower the repeat delay of your keyboard.
+No second picture is set yet, or the file is gone; the settings page shows the path it uses.
+
+### A desktop widget stops reacting
+
+The sensor sits below the widgets, so this should not happen. If it does, switch "Follow on the desktop" off and use the peek mode instead.
+
+### "Follow behind the windows" changes nothing
+
+The running niri is built without the pointer stream patch. `dms ipc call xray status` says `"stream":"refused"` in that case, and the plugin keeps to the sensor and the peek mode.
+
+### The hold key flickers
+
+The key repeat is slower than the time under "Hold mode: stay on after the key". Raise it, or lower the repeat delay of your keyboard.

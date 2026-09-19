@@ -6,7 +6,7 @@ Un plugin para [DankMaterialShell](https://github.com/AvengeMedia/DankMaterialSh
 
 ![Xray Wallpaper](assets/screenshot.png)
 
-Paso a paso y con imágenes: [guía de instalación y ajustes](docs/GUIDE.md).
+Paso a paso y con imágenes: [guía de instalación y ajustes](docs/GUIDE.es.md).
 
 ## Qué hace
 
@@ -16,15 +16,15 @@ En el escritorio el agujero sigue al puntero; aparta el puntero del escritorio y
 
 Sobre una ventana el puntero pertenece a esa ventana, así que hay una segunda vía: el modo peek. Abre una vista redonda de la imagen por encima de todas las ventanas, sigue al puntero en cualquier sitio y termina con un clic, a los pocos segundos, o cuando sueltas la tecla que mantienes pulsada.
 
-En niri hay una tercera vía, si tu niri entrega la posición del puntero por su socket IPC: entonces «Seguir detrás de las ventanas» toma la posición de ahí y el agujero sigue corriendo detrás de las ventanas, visible allí donde son translúcidas. Donde eso falta, el ajuste no hace nada y quedan las dos vías de arriba.
+En niri hay una tercera vía: «Seguir detrás de las ventanas» lee la posición del puntero del socket IPC de niri, y el agujero sigue corriendo detrás de las ventanas, visible allí donde son translúcidas. niri no entrega la posición del puntero por sí mismo, así que esto necesita un niri con un parche mío (ver más abajo). Con un niri normal el ajuste no hace nada y las dos vías de arriba funcionan como siempre.
 
-«Opacidad de la capa superior» deja pasar la imagen por todas partes, no solo por el agujero, con lo que el conjunto se convierte en una mezcla de dos imágenes con un punto despejado alrededor del puntero. Con «Segunda imagen arriba» la imagen tapa el fondo y el agujero muestra el fondo. El tamaño del agujero, la suavidad de su borde, un anillo de luz opcional y la rapidez con la que el agujero sigue al puntero se pueden ajustar.
+«Opacidad de la capa superior» por debajo del 100 % deja pasar la imagen por toda la pantalla, con lo que el conjunto se convierte en una mezcla de dos imágenes con un punto despejado alrededor del puntero. Con «Segunda imagen arriba» la imagen tapa el fondo y el agujero muestra el fondo. El tamaño del agujero, la suavidad de su borde, un anillo de luz opcional y la rapidez con la que el agujero sigue al puntero se pueden ajustar.
 
 La imagen se mapea igual que el fondo de DMS, así que estirar, ajustar y recortar se ven como en tu fondo.
 
 ## Requisitos
 
-DankMaterialShell 1.6.1 o más reciente.
+DankMaterialShell 1.6.1 o más reciente. Yo lo uso en niri. Con un niri normal funciona todo menos «Seguir detrás de las ventanas», que necesita un niri parcheado; lo explica la sección «Seguir detrás de las ventanas» más abajo.
 
 En niri, las superficies de fondo se mueven con los espacios de trabajo si no están en el backdrop. Añade esto a tu configuración de niri; si no, la imagen se desplaza cuando cambias de espacio de trabajo:
 
@@ -37,16 +37,25 @@ layer-rule {
 
 ## Instalación
 
+Desde el registro de complementos:
+
 ```sh
-git clone https://github.com/21Rebel/dms-xray-wallpaper ~/.config/DankMaterialShell/plugins/XrayWallpaper
+dms plugins install xrayWallpaper
 dms ipc call plugins enable xrayWallpaper
 ```
 
-Después elige la segunda imagen en Ajustes → Plugins → Xray Wallpaper. Hasta que esté puesta, en la pantalla no cambia nada.
+También aparece en DMS en Ajustes → Complementos → Explorar. Para instalarlo desde el repositorio:
+
+```sh
+git clone https://github.com/satoshoe-dev/dms-xray-wallpaper ~/.config/DankMaterialShell/plugins/XrayWallpaper
+dms ipc call plugins enable xrayWallpaper
+```
+
+Después elige la segunda imagen en Ajustes → Complementos → Xray Wallpaper. Hasta que esté puesta, en la pantalla no cambia nada.
 
 ## Ajustes
 
-Ajustes → Plugins → Xray Wallpaper
+Ajustes → Complementos → Xray Wallpaper
 
 | Ajuste | Predeterminado |
 |---|---|
@@ -90,7 +99,7 @@ La combinación de mantener pulsada se apoya en la repetición de tecla: cada re
 
 Wayland entrega el movimiento del puntero solo a la superficie que está debajo de él, así que ningún cliente puede seguirlo en cuanto hay una ventana por medio. niri conoce la posición, pero no la publica.
 
-El parche que sí la publica es pequeño y se queda en el IPC: una petición `PointerStream` aparte que envía eventos `PointerMoved`, de modo que los clientes que no la piden nunca los ven. Se envió a niri como pull request; si entra, «Seguir detrás de las ventanas» empieza a funcionar por sí solo. Hasta entonces el interruptor está ahí para quien use un niri que lo lleve.
+El flujo del puntero es un parche mío para niri y no forma parte de niri. Añade al IPC una petición `PointerStream` aparte que envía eventos `PointerMoved`, de modo que los clientes que no la piden nunca los ven. Con un niri compilado con este parche el interruptor funciona. Un niri normal responde a la petición con un error; el plugin lo anota y se queda con el sensor del escritorio y el modo peek. El interruptor entonces no cambia nada, y todo lo demás funciona como se describe arriba.
 
 ## Traducciones
 

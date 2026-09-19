@@ -6,7 +6,7 @@ Um plugin para o [DankMaterialShell](https://github.com/AvengeMedia/DankMaterial
 
 ![Xray Wallpaper](assets/screenshot.png)
 
-Passo a passo com imagens: [guia de instalação e configuração](docs/GUIDE.md).
+Passo a passo com imagens: [guia de instalação e configuração](docs/GUIDE.pt.md).
 
 ## O que faz
 
@@ -16,15 +16,15 @@ No ambiente de trabalho o buraco segue o ponteiro; afasta o ponteiro do ambiente
 
 Sobre uma janela o ponteiro pertence a essa janela, por isso há um segundo caminho: o modo peek. Abre uma vista redonda da imagem acima de todas as janelas, segue o ponteiro em qualquer sítio e termina com um clique, depois de alguns segundos, ou quando largas a tecla que tens premida.
 
-No niri há um terceiro caminho, se o teu niri fornecer a posição do ponteiro pelo seu socket IPC: então "Seguir por trás das janelas" tira a posição daí e o buraco continua a correr por trás das janelas, visível onde elas forem translúcidas. Onde isso falta, a opção não faz nada e ficam os dois caminhos de cima.
+No niri há um terceiro caminho: "Seguir por trás das janelas" lê a posição do ponteiro do socket IPC do niri, e o buraco continua a correr por trás das janelas, visível onde elas forem translúcidas. O niri não fornece a posição do ponteiro por si só, por isso isto precisa de um niri com um patch meu (ver mais abaixo). Com um niri normal a opção não faz nada e os dois caminhos de cima funcionam como sempre.
 
-"Opacidade da camada de cima" deixa passar a imagem em todo o lado, não só no buraco, e o conjunto passa a ser uma mistura de duas imagens com um ponto nítido ao redor do ponteiro. Com "Segunda imagem em cima" é a imagem que cobre o papel de parede e o buraco mostra o papel de parede. O tamanho do buraco, a suavidade da sua borda, um anel de luz se quiseres e a rapidez com que o buraco segue podem todos ser ajustados.
+"Opacidade da camada de cima" abaixo de 100 % deixa passar a imagem pelo ecrã inteiro, e o conjunto passa a ser uma mistura de duas imagens com um ponto nítido ao redor do ponteiro. Com "Segunda imagem em cima" é a imagem que cobre o papel de parede e o buraco mostra o papel de parede. O tamanho do buraco, a suavidade da sua borda, um anel de luz se quiseres e a rapidez com que o buraco segue podem todos ser ajustados.
 
 A imagem é mapeada como o papel de parede do DMS, por isso esticar, ajustar e cortar ficam com o mesmo aspeto do teu papel de parede.
 
 ## Requisitos
 
-DankMaterialShell 1.6.1 ou mais recente.
+DankMaterialShell 1.6.1 ou mais recente. Eu uso-o no niri. Com um niri normal funciona tudo menos "Seguir por trás das janelas", que precisa de um niri com o patch; ver a secção "Seguir por trás das janelas" mais abaixo.
 
 No niri, as superfícies de fundo movem-se com as áreas de trabalho a não ser que fiquem no backdrop. Acrescenta isto à tua configuração do niri, senão a imagem desaparece quando mudas de área de trabalho:
 
@@ -37,16 +37,25 @@ layer-rule {
 
 ## Instalação
 
+Pelo registo de plugins:
+
 ```sh
-git clone https://github.com/21Rebel/dms-xray-wallpaper ~/.config/DankMaterialShell/plugins/XrayWallpaper
+dms plugins install xrayWallpaper
 dms ipc call plugins enable xrayWallpaper
 ```
 
-Depois escolhe a segunda imagem em Definições → Plugins → Xray Wallpaper. Até estar definida, nada muda no ecrã.
+Também aparece no DMS em Configurações → Plugins → Navegar. Para instalar a partir do repositório:
+
+```sh
+git clone https://github.com/satoshoe-dev/dms-xray-wallpaper ~/.config/DankMaterialShell/plugins/XrayWallpaper
+dms ipc call plugins enable xrayWallpaper
+```
+
+Depois escolhe a segunda imagem em Configurações → Plugins → Xray Wallpaper. Até estar definida, nada muda no ecrã.
 
 ## Definições
 
-Definições → Plugins → Xray Wallpaper
+Configurações → Plugins → Xray Wallpaper
 
 | Opção | Predefinição |
 |---|---|
@@ -90,7 +99,7 @@ O atalho para manter premido trabalha através da repetição da tecla: cada rep
 
 O Wayland entrega o movimento do ponteiro só à superfície que está por baixo dele, por isso nenhum cliente o consegue seguir assim que uma janela fica pelo meio. O niri conhece a posição, mas não a publica.
 
-O patch que a publica é pequeno e fica só no IPC: um pedido `PointerStream` à parte que envia eventos `PointerMoved`, por isso os clientes que não o pedem nunca os veem. Foi enviado ao niri como pull request; se entrar, "Seguir por trás das janelas" começa a funcionar sozinho. Até lá, o interruptor está ali para quem tiver o niri a correr com ele.
+O fluxo do ponteiro é um patch que eu escrevi para o niri e não faz parte do niri. Acrescenta ao IPC um pedido `PointerStream` à parte que envia eventos `PointerMoved`, por isso os clientes que não o pedem nunca os veem. Com um niri compilado com este patch o interruptor funciona. Um niri normal responde ao pedido com um erro; o plugin toma nota disso e fica-se pelo sensor do ambiente de trabalho e pelo modo peek. O interruptor não muda nada nesse caso, e tudo o resto funciona como descrito acima.
 
 ## Traduções
 

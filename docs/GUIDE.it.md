@@ -4,10 +4,16 @@
 
 ## 1. Installare il plugin
 
-Clona il repository nella tua cartella dei plugin DMS:
+Dal registro dei plugin:
 
 ```sh
-git clone https://github.com/21Rebel/dms-xray-wallpaper ~/.config/DankMaterialShell/plugins/XrayWallpaper
+dms plugins install xrayWallpaper
+```
+
+Oppure clona il repository nella tua cartella dei plugin DMS:
+
+```sh
+git clone https://github.com/satoshoe-dev/dms-xray-wallpaper ~/.config/DankMaterialShell/plugins/XrayWallpaper
 ```
 
 ## 2. Attivarlo
@@ -97,15 +103,15 @@ binds {
 
 Questo si appoggia alla ripetizione del tasto: ogni ripetizione sposta la fine un po' più in là, e poco dopo che lasci, la vista si chiude. Se sfarfalla mentre tieni premuto il tasto, alza "Tenere premuto: tempo dopo il tasto" nelle impostazioni.
 
-## 10. Seguire dietro le finestre (niri con il flusso del puntatore)
+## 10. Seguire dietro le finestre (solo niri con la patch)
 
-Wayland passa i movimenti del puntatore solo alla superficie sotto il puntatore, ed è per questo che i passi 5 e 9 esistono. Se il tuo niri pubblica la posizione del puntatore sul suo socket IPC, il plugin può prenderla da lì:
+Wayland passa i movimenti del puntatore solo alla superficie sotto il puntatore, ed è per questo che i passi 5 e 9 esistono. niri conosce la posizione ma non la fornisce. Una patch che ho scritto io, e che non fa parte di niri, aggiunge un flusso del puntatore al socket IPC di niri, e il plugin può prendere la posizione da lì. Con un niri normale salta questo passo; tutto il resto di questa guida funziona senza la patch. Per controllare quale niri hai:
 
 ```sh
 niri msg pointer-stream      # prints positions while you move the mouse
 ```
 
-Se compaiono delle posizioni, accendi "Seguire dietro le finestre". Il foro corre allora dappertutto, anche dietro le finestre, e si vede dove una finestra è trasparente. Se il comando è sconosciuto, il tuo niri non ha il flusso e l'interruttore resta senza effetto.
+Se compaiono delle posizioni, accendi "Seguire dietro le finestre". Il foro corre allora dappertutto, anche dietro le finestre, e si vede dove una finestra è trasparente. Se niri non conosce il comando, il tuo niri non ha il flusso del puntatore e l'interruttore resta senza effetto.
 
 ![Il foro dietro una finestra trasparente](images/08-behind.png)
 
@@ -124,14 +130,26 @@ dms ipc call xray status
 
 ## Risoluzione dei problemi
 
-**I livelli scorrono via quando cambio spazio di lavoro.** Manca la regola layer di niri del passo 3.
+### I livelli scorrono via quando cambio spazio di lavoro
 
-**Il foro non segue sulla scrivania.** "Segui sulla scrivania" è spento, oppure una finestra copre quel punto. Il sensore vede il puntatore solo dove la scrivania è libera.
+Manca la regola layer di niri del passo 3.
 
-**Non cambia proprio nulla.** Non è ancora impostata nessuna seconda immagine, oppure il file non c'è più; la pagina delle impostazioni mostra il percorso che usa.
+### Il foro non segue sulla scrivania
 
-**Un widget della scrivania non reagisce più.** Il sensore sta sotto i widget, quindi non dovrebbe succedere. Se succede, spegni "Segui sulla scrivania" e usa la modalità peek.
+"Segui sulla scrivania" è spento, oppure una finestra copre quel punto. Il sensore vede il puntatore solo dove la scrivania è libera.
 
-**"Seguire dietro le finestre" non cambia nulla.** Il niri in esecuzione non pubblica la posizione del puntatore. `dms ipc call xray status` dice in quel caso `"stream":"refused"`, e il plugin resta al sensore e alla modalità peek.
+### Non cambia proprio nulla
 
-**Il tasto tenuto premuto sfarfalla.** La ripetizione del tasto è più lenta del tempo sotto "Tenere premuto: tempo dopo il tasto". Alzalo, oppure abbassa il ritardo di ripetizione della tua tastiera.
+Non è ancora impostata nessuna seconda immagine, oppure il file non c'è più; la pagina delle impostazioni mostra il percorso che usa.
+
+### Un widget della scrivania non reagisce più
+
+Il sensore sta sotto i widget, quindi non dovrebbe succedere. Se succede, spegni "Segui sulla scrivania" e usa la modalità peek.
+
+### "Seguire dietro le finestre" non cambia nulla
+
+Il niri in esecuzione è compilato senza la patch del flusso del puntatore. `dms ipc call xray status` dice in quel caso `"stream":"refused"`, e il plugin resta al sensore e alla modalità peek.
+
+### Il tasto tenuto premuto sfarfalla
+
+La ripetizione del tasto è più lenta del tempo sotto "Tenere premuto: tempo dopo il tasto". Alzalo, oppure abbassa il ritardo di ripetizione della tua tastiera.

@@ -95,7 +95,7 @@
     "Follow behind the windows": {
         "Follow behind the windows": "Seguir por trás das janelas"
     },
-    "Takes the pointer position from niri instead of a sensor, so the hole also runs behind the windows, visible wherever they are see-through. Needs a niri that hands out the pointer position; without it nothing changes.": {
-        "Takes the pointer position from niri instead of a sensor, so the hole also runs behind the windows, visible wherever they are see-through. Needs a niri that hands out the pointer position; without it nothing changes.": "Tira a posição do ponteiro do niri em vez de um sensor, por isso o buraco também corre por trás das janelas e vê-se onde elas são translúcidas. Precisa de um niri que forneça a posição do ponteiro; sem isso nada muda."
+    "Takes the pointer position from niri instead of a sensor, so the hole also runs behind the windows, visible wherever they are see-through. Needs niri built with the pointer stream patch from the README. With a normal niri nothing changes.": {
+        "Takes the pointer position from niri instead of a sensor, so the hole also runs behind the windows, visible wherever they are see-through. Needs niri built with the pointer stream patch from the README. With a normal niri nothing changes.": "Tira a posição do ponteiro do niri em vez de um sensor, por isso o buraco também corre por trás das janelas e vê-se onde elas são translúcidas. Precisa de um niri compilado com o patch do fluxo do ponteiro descrito no README. Com um niri normal nada muda."
     }
 }

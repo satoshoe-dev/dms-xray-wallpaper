@@ -6,7 +6,7 @@ Un plugin per [DankMaterialShell](https://github.com/AvengeMedia/DankMaterialShe
 
 ![Xray Wallpaper](assets/screenshot.png)
 
-Passo per passo con le immagini: [guida all'installazione e alla configurazione](docs/GUIDE.md).
+Passo per passo con le immagini: [guida all'installazione e alla configurazione](docs/GUIDE.it.md).
 
 ## Cosa fa
 
@@ -16,15 +16,15 @@ Sulla scrivania il foro segue il puntatore; porta il puntatore via dalla scrivan
 
 Sopra una finestra il puntatore appartiene a quella finestra, quindi c'è una seconda via: la modalità peek. Apre una vista rotonda dell'immagine al di sopra di tutte le finestre, segue il puntatore in ogni punto e finisce con un clic, dopo qualche secondo, oppure quando lasci il tasto che tieni premuto.
 
-Su niri c'è una terza via, se il tuo niri fornisce la posizione del puntatore sul suo socket IPC: allora "Seguire dietro le finestre" prende la posizione da lì e il foro continua a correre dietro le finestre, visibile dove sono trasparenti. Dove questo manca, l'impostazione non fa nulla e restano le due vie di sopra.
+Su niri c'è una terza via: "Seguire dietro le finestre" legge la posizione del puntatore dal socket IPC di niri, e il foro continua a correre dietro le finestre, visibile dove sono trasparenti. niri da solo non fornisce la posizione del puntatore, quindi serve un niri con una mia patch (vedi sotto). Con un niri normale l'impostazione non fa nulla e le due vie di sopra funzionano come sempre.
 
-"Opacità del livello sopra" lascia passare l'immagine ovunque, non solo nel foro, e il tutto diventa una miscela di due immagini con un punto nitido attorno al puntatore. Con "Seconda immagine sopra" è invece l'immagine a coprire lo sfondo e il foro mostra lo sfondo. La dimensione del foro, la morbidezza del suo bordo, un anello di luce se lo vuoi e la velocità con cui il foro insegue si possono impostare tutti.
+"Opacità del livello sopra" sotto il 100 % lascia passare l'immagine su tutto lo schermo, e il tutto diventa una miscela di due immagini con un punto nitido attorno al puntatore. Con "Seconda immagine sopra" è invece l'immagine a coprire lo sfondo e il foro mostra lo sfondo. La dimensione del foro, la morbidezza del suo bordo, un anello di luce se lo vuoi e la velocità con cui il foro insegue si possono impostare tutti.
 
 L'immagine viene mappata come lo sfondo DMS, quindi stiramento, adattamento e taglio hanno lo stesso aspetto del tuo sfondo.
 
 ## Requisiti
 
-DankMaterialShell 1.6.1 o più recente.
+DankMaterialShell 1.6.1 o più recente. Io lo uso su niri. Con un niri normale funziona tutto tranne "Seguire dietro le finestre", che richiede un niri con la patch; vedi la sezione "Seguire dietro le finestre" più sotto.
 
 Su niri le superfici di sfondo si spostano con gli spazi di lavoro, a meno che non stiano nel backdrop. Aggiungi questo alla tua configurazione di niri, altrimenti l'immagine scorre via quando cambi spazio di lavoro:
 
@@ -37,8 +37,17 @@ layer-rule {
 
 ## Installazione
 
+Dal registro dei plugin:
+
 ```sh
-git clone https://github.com/21Rebel/dms-xray-wallpaper ~/.config/DankMaterialShell/plugins/XrayWallpaper
+dms plugins install xrayWallpaper
+dms ipc call plugins enable xrayWallpaper
+```
+
+Si trova anche in DMS in Impostazioni → Plugin → Sfoglia. Per installarlo dal repository:
+
+```sh
+git clone https://github.com/satoshoe-dev/dms-xray-wallpaper ~/.config/DankMaterialShell/plugins/XrayWallpaper
 dms ipc call plugins enable xrayWallpaper
 ```
 
@@ -90,7 +99,7 @@ La scorciatoia da tenere premuta lavora attraverso la ripetizione del tasto: ogn
 
 Wayland consegna i movimenti del puntatore solo alla superficie sotto il puntatore, quindi nessun client può seguirlo appena c'è una finestra di mezzo. niri conosce la posizione ma non la pubblica.
 
-La patch che la pubblica è piccola e sta tutta nell'IPC: una richiesta `PointerStream` a parte che manda eventi `PointerMoved`, così i client che non la chiedono non li vedono mai. È andata a niri come pull request; se viene accettata, "Seguire dietro le finestre" si mette a funzionare da sé. Fino ad allora l'interruttore è lì per chi fa girare niri con la patch.
+Il flusso del puntatore è una patch che ho scritto io per niri e non fa parte di niri. Aggiunge all'IPC una richiesta `PointerStream` a parte che manda eventi `PointerMoved`, così i client che non la chiedono non li vedono mai. Con un niri compilato con questa patch l'interruttore funziona. Un niri normale risponde alla richiesta con un errore; il plugin se lo segna e resta al sensore della scrivania e alla modalità peek. L'interruttore allora non cambia nulla, e tutto il resto funziona come descritto sopra.
 
 ## Traduzioni
 

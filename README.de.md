@@ -6,7 +6,7 @@ Ein Plugin für [DankMaterialShell](https://github.com/AvengeMedia/DankMaterialS
 
 ![Xray Wallpaper](assets/screenshot.png)
 
-Schritt für Schritt mit Bildern: [Anleitung zu Einbau und Einstellung](docs/GUIDE.md).
+Schritt für Schritt mit Bildern: [Anleitung zu Einbau und Einstellung](docs/GUIDE.de.md).
 
 ## Was es macht
 
@@ -16,15 +16,15 @@ Auf dem Schreibtisch folgt das Loch dem Zeiger; nimmst du den Zeiger vom Schreib
 
 Über einem Fenster gehört der Zeiger diesem Fenster, darum gibt es einen zweiten Weg hinein: den Peek-Modus. Er öffnet eine runde Ansicht des Bildes über allen Fenstern, folgt dem Zeiger überall und endet mit einem Klick, nach einigen Sekunden oder wenn du die gehaltene Taste loslässt.
 
-Unter niri gibt es einen dritten Weg, wenn dein niri die Zeigerposition über seinen IPC-Socket herausgibt: dann nimmt „Hinter den Fenstern folgen“ die Position von dort, und das Loch läuft hinter den Fenstern weiter mit, zu sehen überall dort, wo sie durchscheinend sind. Fehlt das, tut die Einstellung nichts, und es bleibt bei den beiden Wegen oben.
+Unter niri gibt es einen dritten Weg: „Hinter den Fenstern folgen“ liest die Zeigerposition aus dem IPC-Socket von niri, und das Loch läuft hinter den Fenstern weiter mit, zu sehen überall dort, wo sie durchscheinend sind. Von sich aus gibt niri die Zeigerposition nicht heraus, dafür braucht es ein niri mit einem Patch von mir (siehe unten). Mit einem normalen niri tut der Schalter nichts, und die beiden Wege oben arbeiten wie gewohnt.
 
-„Deckkraft der oberen Schicht“ lässt das Bild überall durch, nicht nur im Loch; daraus wird eine Mischung aus zwei Bildern mit einer klaren Stelle um den Zeiger. Mit „Zweites Bild oben“ deckt das Bild stattdessen das Wallpaper ab und das Loch zeigt das Wallpaper. Die Größe des Lochs, die Weichheit seiner Kante, ein Lichtring nach Wunsch und wie schnell das Loch folgt lassen sich alle einstellen.
+„Deckkraft der oberen Schicht“ unter 100 % lässt das Bild über den ganzen Bildschirm durch; daraus wird eine Mischung aus zwei Bildern mit einer klaren Stelle um den Zeiger. Mit „Zweites Bild oben“ deckt das Bild stattdessen das Wallpaper ab und das Loch zeigt das Wallpaper. Die Größe des Lochs, die Weichheit seiner Kante, ein Lichtring nach Wunsch und wie schnell das Loch folgt lassen sich alle einstellen.
 
 Das Bild wird abgebildet wie das DMS-Wallpaper, Strecken, Einpassen und Beschneiden sehen also aus wie bei deinem Wallpaper.
 
 ## Voraussetzungen
 
-DankMaterialShell 1.6.1 oder neuer.
+DankMaterialShell 1.6.1 oder neuer. Ich nutze es unter niri. Mit einem normalen niri funktioniert alles außer „Hinter den Fenstern folgen“; dafür braucht es ein gepatchtes niri, siehe den Abschnitt „Hinter den Fenstern folgen“ weiter unten.
 
 Unter niri wandern Hintergrundflächen mit den Arbeitsflächen mit, solange sie nicht im Backdrop liegen. Trag das in deine niri-Konfiguration ein, sonst scrollt das Bild weg, wenn du die Arbeitsfläche wechselst:
 
@@ -37,8 +37,17 @@ layer-rule {
 
 ## Installation
 
+Aus der Plugin-Registry:
+
 ```sh
-git clone https://github.com/21Rebel/dms-xray-wallpaper ~/.config/DankMaterialShell/plugins/XrayWallpaper
+dms plugins install xrayWallpaper
+dms ipc call plugins enable xrayWallpaper
+```
+
+Das Plugin steht auch in DMS unter Einstellungen → Plugins → Durchsuchen. Oder direkt aus dem Repository:
+
+```sh
+git clone https://github.com/satoshoe-dev/dms-xray-wallpaper ~/.config/DankMaterialShell/plugins/XrayWallpaper
 dms ipc call plugins enable xrayWallpaper
 ```
 
@@ -90,7 +99,7 @@ Die Haltebindung arbeitet über die Tastenwiederholung: jede Wiederholung schieb
 
 Wayland liefert Zeigerbewegungen nur an die Fläche unter dem Zeiger, kein Programm kann ihm also folgen, sobald ein Fenster dazwischen liegt. niri kennt die Position, gibt sie aber nicht heraus.
 
-Der Patch, der sie herausgibt, ist klein und steckt allein im IPC: eine eigene `PointerStream`-Anfrage, die `PointerMoved`-Ereignisse schickt, Programme, die nicht danach fragen, bekommen sie also nie zu sehen. Er ging als Pull Request an niri; wenn er ankommt, fängt „Hinter den Fenstern folgen“ von selbst an zu arbeiten. Bis dahin ist der Schalter für alle da, die niri damit laufen lassen.
+Der Zeigerstrom ist ein Patch von mir für niri und nicht Teil von niri. Er ergänzt das IPC um eine eigene `PointerStream`-Anfrage, die `PointerMoved`-Ereignisse schickt; Programme, die nicht danach fragen, bekommen sie nie zu sehen. Mit einem niri, das mit diesem Patch gebaut ist, funktioniert der Schalter. Ein normales niri beantwortet die Anfrage mit einem Fehler, das Plugin merkt sich das und bleibt beim Fühler auf dem Schreibtisch und beim Peek-Modus. Der Schalter ändert dann nichts, alles andere funktioniert wie oben beschrieben.
 
 ## Übersetzungen
 

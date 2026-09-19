@@ -6,7 +6,7 @@ Un plugin pour [DankMaterialShell](https://github.com/AvengeMedia/DankMaterialSh
 
 ![Xray Wallpaper](assets/screenshot.png)
 
-Pas à pas avec des images : [guide d'installation et de réglage](docs/GUIDE.md).
+Pas à pas avec des images : [guide d'installation et de réglage](docs/GUIDE.fr.md).
 
 ## Ce que ça fait
 
@@ -16,15 +16,15 @@ Sur le bureau, le trou suit le pointeur ; éloigne le pointeur du bureau et le t
 
 Au-dessus d'une fenêtre, le pointeur appartient à cette fenêtre, il y a donc une deuxième entrée : le mode peek. Il ouvre une vue ronde de l'image par-dessus toutes les fenêtres, suit le pointeur partout et se termine sur un clic, après quelques secondes, ou quand tu relâches la touche que tu tiens.
 
-Sous niri il y a une troisième entrée, si ton niri donne la position du pointeur par son socket IPC : « Suivre derrière les fenêtres » y prend alors la position et le trou continue de courir derrière les fenêtres, visible partout où elles sont translucides. Là où ça manque, le réglage ne fait rien et les deux entrées ci-dessus restent.
+Sous niri il y a une troisième entrée : « Suivre derrière les fenêtres » lit la position du pointeur sur le socket IPC de niri, et le trou continue de courir derrière les fenêtres, visible partout où elles sont translucides. niri ne donne pas la position du pointeur de lui-même, il faut donc un niri avec un patch que j'ai écrit (voir plus bas). Avec un niri normal, le réglage ne fait rien et les deux entrées ci-dessus fonctionnent comme d'habitude.
 
-« Opacité de la couche du dessus » laisse passer l'image partout, pas seulement dans le trou, ce qui donne un mélange de deux images avec un endroit net autour du pointeur. Avec « Deuxième image au-dessus », c'est l'image qui recouvre le fond d'écran et le trou montre le fond d'écran. La taille du trou, la douceur de son bord, un anneau de lumière si tu en veux un et la vitesse de suivi du trou se règlent tous.
+« Opacité de la couche du dessus » en dessous de 100 % laisse passer l'image sur tout l'écran, ce qui donne un mélange de deux images avec un endroit net autour du pointeur. Avec « Deuxième image au-dessus », c'est l'image qui recouvre le fond d'écran et le trou montre le fond d'écran. La taille du trou, la douceur de son bord, un anneau de lumière si tu en veux un et la vitesse de suivi du trou se règlent tous.
 
 L'image est placée comme le fond d'écran DMS, l'étirement, l'ajustement et le recadrage ont donc la même allure que pour ton fond d'écran.
 
 ## Prérequis
 
-DankMaterialShell 1.6.1 ou plus récent.
+DankMaterialShell 1.6.1 ou plus récent. Je l'utilise sous niri. Avec un niri normal, tout fonctionne sauf « Suivre derrière les fenêtres », qui demande un niri patché ; voir la section « Suivre derrière les fenêtres » plus bas.
 
 Sous niri, les surfaces d'arrière-plan se déplacent avec les espaces de travail tant qu'elles ne sont pas dans le backdrop. Ajoute ceci à ta configuration niri, sinon l'image défile avec toi quand tu changes d'espace de travail :
 
@@ -37,8 +37,17 @@ layer-rule {
 
 ## Installation
 
+Depuis le registre des plugins :
+
 ```sh
-git clone https://github.com/21Rebel/dms-xray-wallpaper ~/.config/DankMaterialShell/plugins/XrayWallpaper
+dms plugins install xrayWallpaper
+dms ipc call plugins enable xrayWallpaper
+```
+
+Il figure aussi dans DMS sous Paramètres → Plugins → Parcourir. Pour l’installer depuis le dépôt :
+
+```sh
+git clone https://github.com/satoshoe-dev/dms-xray-wallpaper ~/.config/DankMaterialShell/plugins/XrayWallpaper
 dms ipc call plugins enable xrayWallpaper
 ```
 
@@ -90,7 +99,7 @@ Le raccourci à maintenir passe par la répétition de touche : chaque répétit
 
 Wayland ne livre les mouvements du pointeur qu'à la surface sous le pointeur, aucun client ne peut donc le suivre dès qu'une fenêtre est dans le chemin. niri connaît la position mais ne la publie pas.
 
-Le patch qui la publie est petit et tient dans l'IPC seul : une requête `PointerStream` à part qui envoie des événements `PointerMoved`, si bien que les clients qui ne la demandent pas ne les voient jamais. Il est parti chez niri en pull request ; s'il est accepté, « Suivre derrière les fenêtres » se met à marcher tout seul. D'ici là, l'interrupteur est là pour ceux qui font tourner niri avec.
+Le flux du pointeur est un patch que j'ai écrit pour niri et ne fait pas partie de niri. Il ajoute à l'IPC une requête `PointerStream` à part qui envoie des événements `PointerMoved`, si bien que les clients qui ne la demandent pas ne les voient jamais. Avec un niri compilé avec ce patch, l'interrupteur fonctionne. Un niri normal répond à la requête par une erreur ; le plugin le note et s'en tient au capteur du bureau et au mode peek. L'interrupteur ne change alors rien, et tout le reste fonctionne comme décrit plus haut.
 
 ## Traductions
 

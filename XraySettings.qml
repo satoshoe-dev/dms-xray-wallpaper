@@ -195,7 +195,7 @@ PluginSettings {
         visible: enableToggle.value && CompositorService.isNiri
         settingKey: "followEverywhere"
         label: I18n.trFor("xrayWallpaper", "Follow behind the windows")
-        description: I18n.trFor("xrayWallpaper", "Takes the pointer position from niri instead of a sensor, so the hole also runs behind the windows, visible wherever they are see-through. Needs a niri that hands out the pointer position; without it nothing changes.")
+        description: I18n.trFor("xrayWallpaper", "Takes the pointer position from niri instead of a sensor, so the hole also runs behind the windows, visible wherever they are see-through. Needs niri built with the pointer stream patch from the README. With a normal niri nothing changes.")
         defaultValue: false
     }
 

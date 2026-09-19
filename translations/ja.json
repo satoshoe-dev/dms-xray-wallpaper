@@ -95,7 +95,7 @@
     "Follow behind the windows": {
         "Follow behind the windows": "ウィンドウの裏でも追従する"
     },
-    "Takes the pointer position from niri instead of a sensor, so the hole also runs behind the windows, visible wherever they are see-through. Needs a niri that hands out the pointer position; without it nothing changes.": {
-        "Takes the pointer position from niri instead of a sensor, so the hole also runs behind the windows, visible wherever they are see-through. Needs a niri that hands out the pointer position; without it nothing changes.": "ポインターの位置をセンサーではなく niri から受け取るので、穴はウィンドウの裏でも動き、透けているところで見えます。ポインターの位置を渡してくれる niri が必要で、なければ何も変わりません。"
+    "Takes the pointer position from niri instead of a sensor, so the hole also runs behind the windows, visible wherever they are see-through. Needs niri built with the pointer stream patch from the README. With a normal niri nothing changes.": {
+        "Takes the pointer position from niri instead of a sensor, so the hole also runs behind the windows, visible wherever they are see-through. Needs niri built with the pointer stream patch from the README. With a normal niri nothing changes.": "ポインターの位置をセンサーではなく niri から受け取るので、穴はウィンドウの裏でも動き、透けているところで見えます。README にあるポインターストリームのパッチを入れてビルドした niri が必要です。通常の niri では何も変わりません。"
     }
 }

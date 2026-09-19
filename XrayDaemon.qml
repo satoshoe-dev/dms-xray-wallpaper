@@ -14,13 +14,13 @@
 //   peek:    a sensor on the overlay layer, switched on by IPC. It follows the
 //            pointer everywhere, including over windows, and takes clicks while
 //            it is on.
-//   stream:  niri can hand out the pointer position over its IPC socket, if it
-//            was built with the pointer stream. Then the hole follows behind
-//            the windows as well, with no surface of our own in the way. Where
-//            that is missing, the setting simply does nothing.
+//   stream:  a niri built with the pointer stream patch hands out the pointer
+//            position over its IPC socket. Then the hole follows behind the
+//            windows as well, with no surface of our own in the way. A normal
+//            niri refuses the request, and the setting does nothing.
 //
 // On niri, background surfaces move with the workspaces unless they sit in the
-// backdrop; the README has the layer rule for the namespaces used here.
+// backdrop. The README has the layer rule for the xray-wallpaper surface.
 
 pragma ComponentBehavior: Bound
 
@@ -95,13 +95,13 @@ PluginComponent {
         return Math.max(0, Math.min(600, cfg("peekSeconds", 20)));
     }
     // How much of the upper layer stays: 100 covers, lower values let the other
-    // picture through everywhere, not only in the hole
+    // picture through across the whole screen
     readonly property int topOpacity: {
         root._settings;
         return Math.max(0, Math.min(100, cfg("topOpacity", 100)));
     }
-    // Follows the pointer everywhere through niri's pointer stream, if the
-    // running niri has it
+    // Follows the pointer everywhere through niri's pointer stream. Needs a niri
+    // with the pointer stream patch.
     readonly property bool followEverywhere: {
         root._settings;
         return cfg("followEverywhere", false);

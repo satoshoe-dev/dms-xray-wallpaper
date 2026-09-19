@@ -4,10 +4,16 @@
 
 ## 1. Plugin einbauen
 
-Klone das Repository in deinen DMS-Plugin-Ordner:
+Aus der Plugin-Registry:
 
 ```sh
-git clone https://github.com/21Rebel/dms-xray-wallpaper ~/.config/DankMaterialShell/plugins/XrayWallpaper
+dms plugins install xrayWallpaper
+```
+
+Oder klone das Repository in deinen DMS-Plugin-Ordner:
+
+```sh
+git clone https://github.com/satoshoe-dev/dms-xray-wallpaper ~/.config/DankMaterialShell/plugins/XrayWallpaper
 ```
 
 ## 2. Einschalten
@@ -97,15 +103,15 @@ binds {
 
 Der arbeitet über die Tastenwiederholung: jede Wiederholung schiebt das Ende ein Stück weiter, und kurz nachdem du loslässt, schließt sich die Ansicht. Wenn es beim Halten flackert, stell „Halten: Nachlaufzeit nach der Taste“ in den Einstellungen höher.
 
-## 10. Hinter den Fenstern folgen (niri mit dem Zeiger-Strom)
+## 10. Hinter den Fenstern folgen (nur mit gepatchtem niri)
 
-Wayland gibt Zeigerbewegungen nur an die Fläche unter dem Zeiger weiter, darum gibt es Schritt 5 und Schritt 9 überhaupt. Wenn dein niri die Zeigerposition über seinen IPC-Socket herausgibt, kann das Plugin sie von dort nehmen:
+Wayland gibt Zeigerbewegungen nur an die Fläche unter dem Zeiger weiter, darum gibt es Schritt 5 und Schritt 9 überhaupt. niri kennt die Position, gibt sie aber nicht heraus. Ein Patch von mir, der nicht Teil von niri ist, ergänzt den IPC-Socket von niri um einen Zeigerstrom, und von dort kann das Plugin die Position nehmen. Mit einem normalen niri überspringst du diesen Schritt; alles andere in dieser Anleitung funktioniert ohne den Patch. So prüfst du, welches niri du hast:
 
 ```sh
 niri msg pointer-stream      # prints positions while you move the mouse
 ```
 
-Wenn da Positionen erscheinen, schalte „Hinter den Fenstern folgen“ ein. Das Loch läuft dann überall mit, auch hinter Fenstern, und zeigt sich dort, wo ein Fenster durchscheinend ist. Ist der Befehl unbekannt, hat dein niri den Strom nicht, und der Schalter bleibt ohne Wirkung.
+Wenn da Positionen erscheinen, schalte „Hinter den Fenstern folgen“ ein. Das Loch läuft dann überall mit, auch hinter Fenstern, und zeigt sich dort, wo ein Fenster durchscheinend ist. Kennt niri den Befehl nicht, hat dein niri keinen Zeigerstrom, und der Schalter bleibt ohne Wirkung.
 
 ![Das Loch hinter einem durchscheinenden Fenster](images/08-behind.png)
 
@@ -124,14 +130,26 @@ dms ipc call xray status
 
 ## Fehlersuche
 
-**Die Schichten scrollen weg, wenn ich die Arbeitsfläche wechsle.** Die niri-Layer-Regel aus Schritt 3 fehlt.
+### Die Schichten scrollen weg, wenn ich die Arbeitsfläche wechsle
 
-**Das Loch folgt auf dem Schreibtisch nicht.** „Auf dem Schreibtisch folgen“ ist aus, oder ein Fenster deckt die Stelle ab. Der Fühler sieht den Zeiger nur dort, wo der Schreibtisch frei ist.
+Die niri-Layer-Regel aus Schritt 3 fehlt.
 
-**Es ändert sich überhaupt nichts.** Es ist noch kein zweites Bild gesetzt, oder die Datei ist weg; die Einstellungsseite zeigt den Pfad, den sie benutzt.
+### Das Loch folgt auf dem Schreibtisch nicht
 
-**Ein Schreibtisch-Widget reagiert nicht mehr.** Der Fühler liegt unter den Widgets, das sollte also nicht passieren. Wenn doch, schalte „Auf dem Schreibtisch folgen“ aus und nimm stattdessen den Peek-Modus.
+„Auf dem Schreibtisch folgen“ ist aus, oder ein Fenster deckt die Stelle ab. Der Fühler sieht den Zeiger nur dort, wo der Schreibtisch frei ist.
 
-**„Hinter den Fenstern folgen“ ändert nichts.** Das laufende niri gibt die Zeigerposition nicht heraus. `dms ipc call xray status` sagt dann `"stream":"refused"`, und das Plugin bleibt beim Fühler und beim Peek-Modus.
+### Es ändert sich überhaupt nichts
 
-**Die Haltetaste flackert.** Die Tastenwiederholung ist langsamer als die Zeit unter „Halten: Nachlaufzeit nach der Taste“. Stell sie höher, oder verkürze die Verzögerung der Tastenwiederholung deiner Tastatur.
+Es ist noch kein zweites Bild gesetzt, oder die Datei ist weg; die Einstellungsseite zeigt den Pfad, den sie benutzt.
+
+### Ein Schreibtisch-Widget reagiert nicht mehr
+
+Der Fühler liegt unter den Widgets, das sollte also nicht passieren. Wenn doch, schalte „Auf dem Schreibtisch folgen“ aus und nimm stattdessen den Peek-Modus.
+
+### „Hinter den Fenstern folgen“ ändert nichts
+
+Das laufende niri ist ohne den Zeigerstrom-Patch gebaut. `dms ipc call xray status` sagt dann `"stream":"refused"`, und das Plugin bleibt beim Fühler und beim Peek-Modus.
+
+### Die Haltetaste flackert
+
+Die Tastenwiederholung ist langsamer als die Zeit unter „Halten: Nachlaufzeit nach der Taste“. Stell sie höher, oder verkürze die Verzögerung der Tastenwiederholung deiner Tastatur.
