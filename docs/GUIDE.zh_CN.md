@@ -22,7 +22,7 @@ git clone https://github.com/satoshoe-dev/dms-xray-wallpaper ~/.config/DankMater
 
 ![插件列表里的 Xray Wallpaper](images/01-plugin-list.png)
 
-如果没出现，点这个页面上的“Scan”，或者用 `dms restart` 重启 shell。
+如果没出现，点这个页面上的“扫描”，或者用 `dms restart` 重启 shell。
 
 ## 3. 在 niri 上: 把两层放进 backdrop
 

@@ -22,7 +22,7 @@ git clone https://github.com/satoshoe-dev/dms-xray-wallpaper ~/.config/DankMater
 
 ![プラグイン一覧の Xray Wallpaper](images/01-plugin-list.png)
 
-出てこないときは、そのページの「Scan」を押すか、`dms restart` でシェルを再起動します。
+出てこないときは、そのページの「スキャン」を押すか、`dms restart` でシェルを再起動します。
 
 ## 3. niri では: レイヤーを backdrop に置く
 

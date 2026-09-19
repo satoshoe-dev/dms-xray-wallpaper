@@ -24,7 +24,7 @@
         "Second image on top": "Segunda imagem em cima"
     },
     "Off: your wallpaper stays on top and the hole shows the second image. On: the other way round.": {
-        "Off: your wallpaper stays on top and the hole shows the second image. On: the other way round.": "Desligado: o teu papel de parede fica em cima e o buraco mostra a segunda imagem. Ligado: ao contrário."
+        "Off: your wallpaper stays on top and the hole shows the second image. On: the other way round.": "Desligado: o seu papel de parede fica em cima e o buraco mostra a segunda imagem. Ligado: ao contrário."
     },
     "Hole size": {
         "Hole size": "Tamanho do buraco"
@@ -39,7 +39,7 @@
         "Glowing ring": "Anel luminoso"
     },
     "A ring of light along the edge of the hole. 0 leaves it out.": {
-        "A ring of light along the edge of the hole. 0 leaves it out.": "Um anel de luz na borda do buraco. 0 deixa-o de fora."
+        "A ring of light along the edge of the hole. 0 leaves it out.": "Um anel de luz na borda do buraco. 0 o deixa de fora."
     },
     "Ring color": {
         "Ring color": "Cor do anel"
@@ -63,16 +63,16 @@
         "Pixels per second. Lower values let the hole glide after the pointer.": "Pixels por segundo. Valores baixos deixam o buraco deslizar atrás do ponteiro."
     },
     "Follow on the desktop": {
-        "Follow on the desktop": "Seguir no ambiente de trabalho"
+        "Follow on the desktop": "Seguir na área de trabalho"
     },
     "The hole follows the pointer while no window is under it. The sensor sits below the desktop widgets, so they keep their clicks.": {
-        "The hole follows the pointer while no window is under it. The sensor sits below the desktop widgets, so they keep their clicks.": "O buraco segue o ponteiro enquanto não houver uma janela por baixo. O sensor fica sob os widgets do ambiente de trabalho, que mantêm os seus cliques."
+        "The hole follows the pointer while no window is under it. The sensor sits below the desktop widgets, so they keep their clicks.": "O buraco segue o ponteiro enquanto não houver uma janela embaixo dele. O sensor fica sob os widgets da área de trabalho, que mantêm os seus cliques."
     },
     "End peek mode after": {
         "End peek mode after": "Terminar o modo peek após"
     },
     "A click also ends it. 0 keeps it on until you switch it off.": {
-        "A click also ends it. 0 keeps it on until you switch it off.": "Um clique também o termina. 0 mantém-no ligado até o desligares."
+        "A click also ends it. 0 keeps it on until you switch it off.": "Um clique também o encerra. 0 o mantém ligado até você desligá-lo."
     },
     "On niri the layers scroll away with the workspaces unless they sit in the backdrop. The README has the layer rule for the namespace xray-wallpaper.": {
         "On niri the layers scroll away with the workspaces unless they sit in the backdrop. The README has the layer rule for the namespace xray-wallpaper.": "No niri as camadas deslizam com os espaços de trabalho enquanto não estiverem no backdrop. A regra para o espaço de nomes xray-wallpaper está no README."
@@ -81,21 +81,21 @@
         "Upper layer opacity": "Opacidade da camada de cima"
     },
     "100 keeps the upper layer closed, so the picture shows in the hole alone. Lower values let it through everywhere.": {
-        "100 keeps the upper layer closed, so the picture shows in the hole alone. Lower values let it through everywhere.": "100 mantém a camada de cima fechada, por isso a imagem só aparece no buraco. Valores mais baixos deixam-na passar em todo o lado."
+        "100 keeps the upper layer closed, so the picture shows in the hole alone. Lower values let it through everywhere.": "100 mantém a camada de cima fechada, então a imagem só aparece no buraco. Valores mais baixos a deixam passar em toda parte."
     },
     "Over a window the pointer belongs to that window. The peek mode puts a round opening above the windows instead. Put it on a key as a switch with 'dms ipc call xray peek toggle', or to show while the key is held with 'dms ipc call xray hold'.": {
-        "Over a window the pointer belongs to that window. The peek mode puts a round opening above the windows instead. Put it on a key as a switch with 'dms ipc call xray peek toggle', or to show while the key is held with 'dms ipc call xray hold'.": "Sobre uma janela o ponteiro pertence a essa janela. O modo peek coloca em vez disso uma abertura redonda acima das janelas. Põe-no numa tecla como interruptor com «dms ipc call xray peek toggle», ou para mostrar enquanto a tecla está premida com «dms ipc call xray hold»."
+        "Over a window the pointer belongs to that window. The peek mode puts a round opening above the windows instead. Put it on a key as a switch with 'dms ipc call xray peek toggle', or to show while the key is held with 'dms ipc call xray hold'.": "Sobre uma janela o ponteiro pertence a essa janela. Em vez disso, o modo peek coloca uma abertura redonda acima das janelas. Coloque-o em uma tecla como interruptor com “dms ipc call xray peek toggle”, ou para mostrar enquanto a tecla está pressionada com “dms ipc call xray hold”."
     },
     "Hold mode: stay on after the key": {
         "Hold mode: stay on after the key": "Manter: tempo depois da tecla"
     },
     "The key repeat keeps the opening alive. This is how long it stays after the last repeat, so a slow key repeat needs a higher value.": {
-        "The key repeat keeps the opening alive. This is how long it stays after the last repeat, so a slow key repeat needs a higher value.": "A repetição da tecla mantém a abertura activa. Este é o tempo que fica depois da última repetição, por isso uma repetição lenta precisa de um valor maior."
+        "The key repeat keeps the opening alive. This is how long it stays after the last repeat, so a slow key repeat needs a higher value.": "A repetição da tecla mantém a abertura ativa. Este é o tempo que ela fica depois da última repetição, então uma repetição lenta precisa de um valor maior."
     },
     "Follow behind the windows": {
         "Follow behind the windows": "Seguir por trás das janelas"
     },
     "Takes the pointer position from niri instead of a sensor, so the hole also runs behind the windows, visible wherever they are see-through. Needs niri built with the pointer stream patch from the README. With a normal niri nothing changes.": {
-        "Takes the pointer position from niri instead of a sensor, so the hole also runs behind the windows, visible wherever they are see-through. Needs niri built with the pointer stream patch from the README. With a normal niri nothing changes.": "Tira a posição do ponteiro do niri em vez de um sensor, por isso o buraco também corre por trás das janelas e vê-se onde elas são translúcidas. Precisa de um niri compilado com o patch do fluxo do ponteiro descrito no README. Com um niri normal nada muda."
+        "Takes the pointer position from niri instead of a sensor, so the hole also runs behind the windows, visible wherever they are see-through. Needs niri built with the pointer stream patch from the README. With a normal niri nothing changes.": "Pega a posição do ponteiro do niri em vez de um sensor, então o buraco também corre por trás das janelas e aparece onde elas são translúcidas. Precisa de um niri compilado com o patch do fluxo do ponteiro descrito no README. Com um niri normal nada muda."
     }
 }

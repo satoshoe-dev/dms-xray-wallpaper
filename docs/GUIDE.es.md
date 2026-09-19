@@ -22,7 +22,7 @@ Abre Ajustes → Complementos. Xray Wallpaper aparece en la lista. Actívalo.
 
 ![Lista de plugins con Xray Wallpaper](images/01-plugin-list.png)
 
-Si no aparece, pulsa «Scan» en esa página o reinicia la shell con `dms restart`.
+Si no aparece, pulsa «Escanear» en esa página o reinicia la shell con `dms restart`.
 
 ## 3. En niri: mantén las capas en el backdrop
 

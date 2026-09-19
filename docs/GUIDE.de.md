@@ -22,7 +22,7 @@ git clone https://github.com/satoshoe-dev/dms-xray-wallpaper ~/.config/DankMater
 
 ![Plugin-Liste mit Xray Wallpaper](images/01-plugin-list.png)
 
-Wenn es nicht auftaucht, klick auf dieser Seite auf „Scan“ oder starte die Shell mit `dms restart` neu.
+Wenn es nicht auftaucht, klick auf dieser Seite auf „Scannen“ oder starte die Shell mit `dms restart` neu.
 
 ## 3. Unter niri: die Schichten im Backdrop halten
 
