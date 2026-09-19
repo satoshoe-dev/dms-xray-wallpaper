@@ -101,6 +101,8 @@ Wayland ne livre les mouvements du pointeur qu’à la surface sous le pointeur,
 
 Le flux du pointeur est un patch que j’ai écrit pour niri et ne fait pas partie de niri. Il ajoute à l’IPC une requête `PointerStream` à part qui envoie des événements `PointerMoved`, si bien que les clients qui ne la demandent pas ne les voient jamais. Avec un niri compilé avec ce patch, l’interrupteur fonctionne. Un niri normal répond à la requête par une erreur ; le plugin le note et s’en tient au capteur du bureau et au mode peek. L’interrupteur ne change alors rien, et tout le reste fonctionne comme décrit plus haut.
 
+Le patch pour niri 26.04 se trouve dans la branche [pointer-stream-v26.04](https://github.com/satoshoe-dev/niri/tree/pointer-stream-v26.04) de mon fork de niri. Il se compile comme niri lui-même, voir son README.
+
 ## Traductions
 
 La page de paramètres existe en allemand, espagnol, français, italien, portugais, russe, japonais et chinois simplifié, et elle suit la langue réglée dans DMS. Si une traduction sonne faux, une pull request est bienvenue.

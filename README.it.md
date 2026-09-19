@@ -101,6 +101,8 @@ Wayland consegna i movimenti del puntatore solo alla superficie sotto il puntato
 
 Il flusso del puntatore è una patch che ho scritto io per niri e non fa parte di niri. Aggiunge all'IPC una richiesta `PointerStream` a parte che manda eventi `PointerMoved`, così i client che non la chiedono non li vedono mai. Con un niri compilato con questa patch l'interruttore funziona. Un niri normale risponde alla richiesta con un errore; il plugin se lo segna e resta al sensore della scrivania e alla modalità peek. L'interruttore allora non cambia nulla, e tutto il resto funziona come descritto sopra.
 
+La patch per niri 26.04 si trova nel ramo [pointer-stream-v26.04](https://github.com/satoshoe-dev/niri/tree/pointer-stream-v26.04) del mio fork di niri. Si compila come niri stesso, vedi il suo README.
+
 ## Traduzioni
 
 La pagina delle impostazioni è disponibile in tedesco, spagnolo, francese, italiano, portoghese, russo, giapponese e cinese semplificato e segue la lingua impostata in DMS. Se una traduzione suona male, una pull request è benvenuta.

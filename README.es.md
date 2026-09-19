@@ -101,6 +101,8 @@ Wayland entrega el movimiento del puntero solo a la superficie que está debajo 
 
 El flujo del puntero es un parche mío para niri y no forma parte de niri. Añade al IPC una petición `PointerStream` aparte que envía eventos `PointerMoved`, de modo que los clientes que no la piden nunca los ven. Con un niri compilado con este parche el interruptor funciona. Un niri normal responde a la petición con un error; el plugin lo anota y se queda con el sensor del escritorio y el modo peek. El interruptor entonces no cambia nada, y todo lo demás funciona como se describe arriba.
 
+El parche para niri 26.04 está en la rama [pointer-stream-v26.04](https://github.com/satoshoe-dev/niri/tree/pointer-stream-v26.04) de mi fork de niri. Se compila igual que niri, consulta su README.
+
 ## Traducciones
 
 La página de ajustes está disponible en alemán, español, francés, italiano, portugués, ruso, japonés y chino simplificado, y sigue el idioma configurado en DMS. Si una traducción suena mal, se agradece un pull request.

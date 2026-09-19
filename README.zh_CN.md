@@ -101,6 +101,8 @@ Wayland 只把指针的移动交给指针下面的那个表面，所以一旦有
 
 指针流是我给 niri 写的补丁，不属于 niri 本身。它在 IPC 里加一个单独的 `PointerStream` 请求，发送 `PointerMoved` 事件，没有请求的客户端一概收不到。用这个补丁编译的 niri 上，开关就能用。普通的 niri 会对这个请求返回错误，插件记下这一点，继续用桌面上的感应面和 peek 模式。这时开关没有任何作用，其他功能照上面说的工作。
 
+针对 niri 26.04 的补丁位于我的 niri 复刻仓库的 [pointer-stream-v26.04](https://github.com/satoshoe-dev/niri/tree/pointer-stream-v26.04) 分支。构建方式与 niri 本身相同，参见其 README。
+
 ## 翻译
 
 设置页面有德语、西班牙语、法语、意大利语、葡萄牙语、俄语、日语和简体中文，跟随 DMS 里设置的语言。如果某处译得不对，欢迎提 pull request。

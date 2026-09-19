@@ -101,6 +101,8 @@ Wayland liefert Zeigerbewegungen nur an die Fläche unter dem Zeiger, kein Progr
 
 Der Zeigerstrom ist ein Patch von mir für niri und nicht Teil von niri. Er ergänzt das IPC um eine eigene `PointerStream`-Anfrage, die `PointerMoved`-Ereignisse schickt; Programme, die nicht danach fragen, bekommen sie nie zu sehen. Mit einem niri, das mit diesem Patch gebaut ist, funktioniert der Schalter. Ein normales niri beantwortet die Anfrage mit einem Fehler, das Plugin merkt sich das und bleibt beim Fühler auf dem Schreibtisch und beim Peek-Modus. Der Schalter ändert dann nichts, alles andere funktioniert wie oben beschrieben.
 
+Der Patch für niri 26.04 liegt im Zweig [pointer-stream-v26.04](https://github.com/satoshoe-dev/niri/tree/pointer-stream-v26.04) meines niri-Forks. Gebaut wird er wie niri selbst, siehe dessen README.
+
 ## Übersetzungen
 
 Die Einstellungsseite gibt es auf Deutsch, Spanisch, Französisch, Italienisch, Portugiesisch, Russisch, Japanisch und Chinesisch (vereinfacht) und sie folgt der in DMS eingestellten Sprache. Wenn eine Übersetzung falsch klingt, ist ein Pull Request willkommen.

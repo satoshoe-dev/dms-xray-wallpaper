@@ -101,6 +101,8 @@ O Wayland entrega o movimento do ponteiro só para a superfície que está embai
 
 O fluxo do ponteiro é um patch que eu escrevi para o niri e não faz parte do niri. Ele adiciona ao IPC um pedido `PointerStream` separado que envia eventos `PointerMoved`, então os clientes que não o pedem nunca os veem. Com um niri compilado com este patch o interruptor funciona. Um niri normal responde ao pedido com um erro; o plugin registra isso e fica só com o sensor da área de trabalho e o modo peek. Nesse caso o interruptor não muda nada, e todo o resto funciona como descrito acima.
 
+O patch para o niri 26.04 está no branch [pointer-stream-v26.04](https://github.com/satoshoe-dev/niri/tree/pointer-stream-v26.04) do meu fork do niri. Ele é compilado como o próprio niri, veja o README dele.
+
 ## Traduções
 
 A página de configurações está disponível em alemão, espanhol, francês, italiano, português, russo, japonês e chinês simplificado e segue o idioma definido no DMS. Se uma tradução soar mal, um pull request é bem-vindo.

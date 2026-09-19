@@ -101,6 +101,8 @@ Wayland delivers pointer motion only to the surface under the pointer, so no cli
 
 The pointer stream is a patch of mine for niri and is not part of niri. It adds a separate `PointerStream` request to the IPC that sends `PointerMoved` events, so clients that do not ask for it never see them. With a niri built with this patch the switch works. A normal niri answers the request with an error; the plugin remembers that and stays with the desktop sensor and the peek mode. The switch then changes nothing, and everything else works as described above.
 
+The patch against niri 26.04 is in the branch [pointer-stream-v26.04](https://github.com/satoshoe-dev/niri/tree/pointer-stream-v26.04) of my niri fork. It builds like niri itself, see the niri README.
+
 ## Translations
 
 The settings page is available in German, Spanish, French, Italian, Portuguese, Russian, Japanese and Simplified Chinese and follows the language set in DMS. If a translation reads wrong, a pull request is welcome.
