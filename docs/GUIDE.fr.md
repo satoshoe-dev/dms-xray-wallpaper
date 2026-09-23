@@ -71,9 +71,11 @@ Amenez le pointeur sur une fenêtre et le trou se referme.
 
 « Opacité de la couche du dessus » décide de ce qu’il reste du fond d’écran. À 100 %, l’image n’apparaît que dans le trou. Baissez la valeur et l’image passe sur tout l’écran, le trou restant le seul endroit où elle est entière.
 
+![Opacité de la couche du dessus à 60 pour cent](images/07-opacity.png)
+
 « Intensité du trou » fait l’inverse. Le fond d’écran reste tel quel et le trou ne s’ouvre qu’en partie : à 60 %, l’image transparaît autour du pointeur à 60 %. Un circuit imprimé derrière un fond d’écran normal transparaît alors là où vous déplacez le pointeur.
 
-![Opacité de la couche du dessus à 60 pour cent](images/07-opacity.png)
+![Intensité du trou à 60 pour cent](images/09-hole-strength.png)
 
 Les deux couches peuvent aussi être assombries séparément. Assombrir celle du dessus fait ressortir le trou ; assombrir celle du dessous garde l’image calme derrière vos icônes.
 

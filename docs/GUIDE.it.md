@@ -71,9 +71,11 @@ Porta il puntatore su una finestra e il foro si richiude.
 
 "Opacità del livello sopra" decide quanto resta dello sfondo. A 100 % l'immagine si vede solo nel foro. Abbassala e l'immagine passa su tutto lo schermo, con il foro come l'unico punto in cui è piena.
 
+![Opacità del livello sopra al 60 per cento](images/07-opacity.png)
+
 "Intensità del foro" fa il contrario. Lascia lo sfondo com'è e apre il foro solo in parte: al 60 % l'immagine traspare intorno al puntatore al 60 %. Un circuito stampato dietro uno sfondo normale traspare allora dove muovi il puntatore.
 
-![Opacità del livello sopra al 60 per cento](images/07-opacity.png)
+![Intensità del foro al 60 per cento](images/09-hole-strength.png)
 
 I due livelli si possono anche scurire separatamente. Scurire quello sopra fa risaltare il foro; scurire quello sotto tiene calma l'immagine dietro le tue icone.
 

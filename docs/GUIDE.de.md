@@ -71,9 +71,11 @@ Bewege den Zeiger auf ein Fenster, und das Loch schließt sich wieder.
 
 „Deckkraft der oberen Schicht“ bestimmt, wie viel vom Wallpaper bleibt. Bei 100 % zeigt sich das Bild nur im Loch. Stell den Wert kleiner, und das Bild kommt über den ganzen Bildschirm durch, mit dem Loch als der einen Stelle, an der es ganz da ist.
 
+![Deckkraft der oberen Schicht bei 60 Prozent](images/07-opacity.png)
+
 „Stärke des Lochs“ wirkt andersherum. Das Wallpaper bleibt, wie es ist, und das Loch öffnet sich nur teilweise: Bei 60 % scheint das Bild am Zeiger zu 60 % durch. Eine Platine hinter einem normalen Wallpaper schimmert dann dort durch, wo du den Zeiger bewegst.
 
-![Deckkraft der oberen Schicht bei 60 Prozent](images/07-opacity.png)
+![Stärke des Lochs bei 60 Prozent](images/09-hole-strength.png)
 
 Beide Schichten lassen sich außerdem getrennt abdunkeln. Dunkelst du die obere ab, tritt das Loch hervor; dunkelst du die untere ab, bleibt das Bild ruhig hinter deinen Symbolen.
 
