@@ -83,6 +83,12 @@
     "100 keeps the upper layer closed, so the picture shows in the hole alone. Lower values let it through everywhere.": {
         "100 keeps the upper layer closed, so the picture shows in the hole alone. Lower values let it through everywhere.": "100 表示上层不透，图片只在孔里露出。数值越小，图片在整块屏幕上透出得越多。"
     },
+    "Hole strength": {
+        "Hole strength": "孔的强度"
+    },
+    "How far the hole opens. 100 shows the layer below fully, lower values let it through only partly.": {
+        "How far the hole opens. 100 shows the layer below fully, lower values let it through only partly.": "孔打开的程度。100 完全显示下层，数值越小，下层只透出一部分。"
+    },
     "Over a window the pointer belongs to that window. The peek mode puts a round opening above the windows instead. Put it on a key as a switch with 'dms ipc call xray peek toggle', or to show while the key is held with 'dms ipc call xray hold'.": {
         "Over a window the pointer belongs to that window. The peek mode puts a round opening above the windows instead. Put it on a key as a switch with 'dms ipc call xray peek toggle', or to show while the key is held with 'dms ipc call xray hold'.": "在窗口上方，指针属于那个窗口。peek 模式会在窗口之上开一个圆窗。用「dms ipc call xray peek toggle」把它绑成开关，或者用「dms ipc call xray hold」在按住按键时显示。"
     },

@@ -43,6 +43,7 @@ layout(std140, binding = 0) uniform buf {
     float topOpacity;   // 0..1, how much the upper layer covers
     float imageOnTop;   // 1 puts the picture above the wallpaper
     float lens;         // 1 draws only the hole, for the surface above the windows
+    float holeStrength; // 0..1, how far the hole opens in its middle
     vec4 ringColor;
 } ubuf;
 
@@ -73,9 +74,9 @@ void main() {
     float r = ubuf.radius * ubuf.open;
     float soft = max(1.0, ubuf.softness);
 
-    // 1 where the upper layer covers, 0 inside the hole
-    float cover = smoothstep(r - soft, r + soft, d);
-    float hole = 1.0 - cover;
+    // 0 where the upper layer covers, up to holeStrength inside the hole
+    float hole = (1.0 - smoothstep(r - soft, r + soft, d)) * ubuf.holeStrength;
+    float cover = 1.0 - hole;
 
     float ring = 0.0;
     if (ubuf.ringWidth > 0.0 && r > 1.0) {

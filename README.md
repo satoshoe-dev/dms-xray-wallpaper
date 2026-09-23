@@ -18,7 +18,7 @@ Over a window the pointer belongs to that window, so there is a second way in: t
 
 There is a third way on niri: "Follow behind the windows" reads the pointer position from niri's IPC socket, and the hole keeps running behind the windows, seen wherever they are see-through. niri does not hand out the pointer position on its own, so this needs a niri with a patch of mine (see below). With a normal niri the switch stays hidden and the two ways above work as usual.
 
-"Upper layer opacity" below 100 % lets the picture through across the whole screen, which turns the whole thing into a blend of two pictures with a clear spot around the pointer. With "Second image on top" the picture covers the wallpaper instead and the hole shows the wallpaper. The hole size, the softness of its edge, an optional ring of light and how fast the hole follows can all be set.
+"Upper layer opacity" below 100 % lets the picture through across the whole screen, which turns the whole thing into a blend of two pictures with a clear spot around the pointer. With "Second image on top" the picture covers the wallpaper instead and the hole shows the wallpaper. The hole size, the softness of its edge, an optional ring of light and how fast the hole follows can all be set. "Hole strength" below 100 % opens the hole only partly, so the picture shows through around the pointer without replacing the wallpaper there, for example a circuit board behind a normal wallpaper.
 
 The picture is mapped like the DMS wallpaper, so stretch, fit and crop look the same as for your wallpaper.
 
@@ -66,6 +66,7 @@ Settings → Plugins → Xray Wallpaper
 | Glowing ring | 0 px (off) |
 | Ring color | accent |
 | Upper layer opacity | 100 % |
+| Hole strength | 100 % |
 | Darken the upper / lower layer | 0 % / 0 % |
 | Follow speed | 4000 px/s |
 | Follow on the desktop | on |

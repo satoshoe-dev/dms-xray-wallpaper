@@ -18,7 +18,7 @@ Sopra una finestra il puntatore appartiene a quella finestra, quindi c'è una se
 
 Su niri c'è una terza via: "Seguire dietro le finestre" legge la posizione del puntatore dal socket IPC di niri, e il foro continua a correre dietro le finestre, visibile dove sono trasparenti. niri da solo non fornisce la posizione del puntatore, quindi serve un niri con una mia patch (vedi sotto). Con un niri normale l'impostazione resta nascosta e le due vie di sopra funzionano come sempre.
 
-"Opacità del livello sopra" sotto il 100 % lascia passare l'immagine su tutto lo schermo, e il tutto diventa una miscela di due immagini con un punto nitido attorno al puntatore. Con "Seconda immagine sopra" è invece l'immagine a coprire lo sfondo e il foro mostra lo sfondo. La dimensione del foro, la morbidezza del suo bordo, un anello di luce se lo vuoi e la velocità con cui il foro insegue si possono impostare tutti.
+"Opacità del livello sopra" sotto il 100 % lascia passare l'immagine su tutto lo schermo, e il tutto diventa una miscela di due immagini con un punto nitido attorno al puntatore. Con "Seconda immagine sopra" è invece l'immagine a coprire lo sfondo e il foro mostra lo sfondo. La dimensione del foro, la morbidezza del suo bordo, un anello di luce se lo vuoi e la velocità con cui il foro insegue si possono impostare tutti. "Intensità del foro" sotto il 100 % apre il foro solo in parte, così l'immagine traspare intorno al puntatore senza sostituire lì lo sfondo, per esempio un circuito stampato dietro uno sfondo normale.
 
 L'immagine viene mappata come lo sfondo DMS, quindi stiramento, adattamento e taglio hanno lo stesso aspetto del tuo sfondo.
 
@@ -66,6 +66,7 @@ Impostazioni → Plugin → Xray Wallpaper
 | Anello luminoso | 0 px (spento) |
 | Colore dell'anello | Accento |
 | Opacità del livello sopra | 100 % |
+| Intensità del foro | 100 % |
 | Scurisci il livello sopra / sotto | 0 % / 0 % |
 | Velocità di inseguimento | 4000 px/s |
 | Segui sulla scrivania | acceso |

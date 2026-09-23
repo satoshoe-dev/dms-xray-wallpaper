@@ -18,7 +18,7 @@ Au-dessus d’une fenêtre, le pointeur appartient à cette fenêtre, il y a don
 
 Sous niri il y a une troisième entrée : « Suivre derrière les fenêtres » lit la position du pointeur sur le socket IPC de niri, et le trou continue de courir derrière les fenêtres, visible partout où elles sont translucides. niri ne donne pas la position du pointeur de lui-même, il faut donc un niri avec un patch que j’ai écrit (voir plus bas). Avec un niri normal, le réglage reste masqué et les deux entrées ci-dessus fonctionnent comme d’habitude.
 
-« Opacité de la couche du dessus » en dessous de 100 % laisse passer l’image sur tout l’écran, ce qui donne un mélange de deux images avec un endroit net autour du pointeur. Avec « Deuxième image au-dessus », c’est l’image qui recouvre le fond d’écran et le trou montre le fond d’écran. La taille du trou, la douceur de son bord, un anneau de lumière si vous en voulez un et la vitesse de suivi du trou se règlent tous.
+« Opacité de la couche du dessus » en dessous de 100 % laisse passer l’image sur tout l’écran, ce qui donne un mélange de deux images avec un endroit net autour du pointeur. Avec « Deuxième image au-dessus », c’est l’image qui recouvre le fond d’écran et le trou montre le fond d’écran. La taille du trou, la douceur de son bord, un anneau de lumière si vous en voulez un et la vitesse de suivi du trou se règlent tous. « Intensité du trou » sous 100 % n’ouvre le trou qu’en partie, l’image transparaît alors autour du pointeur sans y remplacer le fond d’écran, par exemple un circuit imprimé derrière un fond d’écran normal.
 
 L’image est placée comme le fond d’écran DMS, l’étirement, l’ajustement et le recadrage ont donc la même allure que pour votre fond d’écran.
 
@@ -66,6 +66,7 @@ Paramètres → Plugins → Xray Wallpaper
 | Anneau lumineux | 0 px (désactivé) |
 | Couleur de l’anneau | Accent |
 | Opacité de la couche du dessus | 100 % |
+| Intensité du trou | 100 % |
 | Assombrir la couche du dessus / du dessous | 0 % / 0 % |
 | Vitesse de suivi | 4000 px/s |
 | Suivre sur le bureau | activé |

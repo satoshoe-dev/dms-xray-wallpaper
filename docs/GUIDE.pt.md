@@ -71,6 +71,8 @@ Leve o ponteiro para cima de uma janela e o buraco se fecha de novo.
 
 "Opacidade da camada de cima" decide quanto sobra do papel de parede. A 100 % a imagem só aparece no buraco. Abaixe o valor e a imagem passa pela tela inteira, com o buraco como o único lugar onde ela está inteira.
 
+"Intensidade do buraco" faz o contrário. Deixa o papel de parede como está e abre o buraco só em parte: a 60 % a imagem aparece em volta do ponteiro a 60 %. Uma placa de circuito atrás de um papel de parede normal aparece então de leve onde você move o ponteiro.
+
 ![Opacidade da camada de cima a 60 por cento](images/07-opacity.png)
 
 As duas camadas também podem ser escurecidas separadamente. Escurecer a de cima faz o buraco saltar aos olhos; escurecer a de baixo mantém a imagem calma por trás dos seus ícones.

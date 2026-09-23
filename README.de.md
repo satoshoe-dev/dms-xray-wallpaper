@@ -18,7 +18,7 @@ Auf dem Schreibtisch folgt das Loch dem Zeiger; nimmst du den Zeiger vom Schreib
 
 Unter niri gibt es einen dritten Weg: „Hinter den Fenstern folgen“ liest die Zeigerposition aus dem IPC-Socket von niri, und das Loch läuft hinter den Fenstern weiter mit, zu sehen überall dort, wo sie durchscheinend sind. Von sich aus gibt niri die Zeigerposition nicht heraus, dafür braucht es ein niri mit einem Patch von mir (siehe unten). Mit einem normalen niri bleibt der Schalter ausgeblendet, und die beiden Wege oben arbeiten wie gewohnt.
 
-„Deckkraft der oberen Schicht“ unter 100 % lässt das Bild über den ganzen Bildschirm durch; daraus wird eine Mischung aus zwei Bildern mit einer klaren Stelle um den Zeiger. Mit „Zweites Bild oben“ deckt das Bild stattdessen das Wallpaper ab und das Loch zeigt das Wallpaper. Die Größe des Lochs, die Weichheit seiner Kante, ein Lichtring nach Wunsch und wie schnell das Loch folgt lassen sich alle einstellen.
+„Deckkraft der oberen Schicht“ unter 100 % lässt das Bild über den ganzen Bildschirm durch; daraus wird eine Mischung aus zwei Bildern mit einer klaren Stelle um den Zeiger. Mit „Zweites Bild oben“ deckt das Bild stattdessen das Wallpaper ab und das Loch zeigt das Wallpaper. Die Größe des Lochs, die Weichheit seiner Kante, ein Lichtring nach Wunsch und wie schnell das Loch folgt lassen sich alle einstellen. „Stärke des Lochs“ unter 100 % öffnet das Loch nur teilweise, das Bild scheint dann am Zeiger durch, ohne das Wallpaper dort zu ersetzen, etwa eine Platine hinter einem normalen Wallpaper.
 
 Das Bild wird abgebildet wie das DMS-Wallpaper, Strecken, Einpassen und Beschneiden sehen also aus wie bei deinem Wallpaper.
 
@@ -66,6 +66,7 @@ Einstellungen → Plugins → Xray Wallpaper
 | Leuchtender Ring | 0 px (aus) |
 | Ringfarbe | Akzent |
 | Deckkraft der oberen Schicht | 100 % |
+| Stärke des Lochs | 100 % |
 | Obere / untere Schicht abdunkeln | 0 % / 0 % |
 | Nachlauf | 4000 px/s |
 | Auf dem Schreibtisch folgen | ein |

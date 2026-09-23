@@ -57,6 +57,7 @@ Item {
         property real topOpacity: layer.ctl.topOpacity / 100
         property real imageOnTop: layer.ctl.imageOnTop ? 1 : 0
         property real lens: layer.lensOnly ? 1 : 0
+        property real holeStrength: layer.ctl.holeStrength / 100
         property color ringColor: layer.ctl.ringColorChoice === "text" ? Theme.surfaceText : Theme.primary
 
         fragmentShader: Qt.resolvedUrl("shaders/xray.frag.qsb")

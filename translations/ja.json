@@ -83,6 +83,12 @@
     "100 keeps the upper layer closed, so the picture shows in the hole alone. Lower values let it through everywhere.": {
         "100 keeps the upper layer closed, so the picture shows in the hole alone. Lower values let it through everywhere.": "100 なら上のレイヤーは閉じたままで、画像は穴の中だけに見えます。小さくすると全体にも透けます。"
     },
+    "Hole strength": {
+        "Hole strength": "穴の強さ"
+    },
+    "How far the hole opens. 100 shows the layer below fully, lower values let it through only partly.": {
+        "How far the hole opens. 100 shows the layer below fully, lower values let it through only partly.": "穴がどこまで開くか。100 で下のレイヤーが完全に見え、値を下げると一部だけ透けて見えます。"
+    },
     "Over a window the pointer belongs to that window. The peek mode puts a round opening above the windows instead. Put it on a key as a switch with 'dms ipc call xray peek toggle', or to show while the key is held with 'dms ipc call xray hold'.": {
         "Over a window the pointer belongs to that window. The peek mode puts a round opening above the windows instead. Put it on a key as a switch with 'dms ipc call xray peek toggle', or to show while the key is held with 'dms ipc call xray hold'.": "ウィンドウの上ではポインターはそのウィンドウのものです。peek モードは代わりにウィンドウの上へ丸い窓を置きます。切り替えとして「dms ipc call xray peek toggle」を、押している間だけ見せるなら「dms ipc call xray hold」をキーに割り当ててください。"
     },

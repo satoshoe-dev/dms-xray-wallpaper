@@ -71,6 +71,8 @@ Lleva el puntero sobre una ventana y el agujero se cierra otra vez.
 
 «Opacidad de la capa superior» decide cuánto fondo se queda. Al 100 % la imagen solo se ve en el agujero. Bájala y la imagen sale por toda la pantalla, con el agujero como el único sitio donde está entera.
 
+«Intensidad del agujero» funciona al revés. Deja el fondo como está y abre el agujero solo en parte: al 60 % la imagen se ve alrededor del puntero al 60 %. Una placa de circuito detrás de un fondo normal se transparenta entonces allí donde mueves el puntero.
+
 ![Opacidad de la capa superior al 60 por ciento](images/07-opacity.png)
 
 Las dos capas también se pueden oscurecer por separado. Oscurecer la de arriba hace que el agujero destaque; oscurecer la de abajo mantiene tranquila la imagen detrás de tus iconos.

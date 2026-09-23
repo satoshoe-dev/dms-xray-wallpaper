@@ -71,6 +71,8 @@ Move the pointer onto a window and the hole closes again.
 
 "Upper layer opacity" decides how much of the wallpaper stays. At 100 % the picture shows in the hole alone. Lower it and the picture comes through the whole screen, with the hole as the one spot where it is fully there.
 
+"Hole strength" works the other way round. It leaves the wallpaper as it is and opens the hole only partly: at 60 % the picture shows through around the pointer at 60 %. A circuit board behind a normal wallpaper then shimmers through where you move the pointer.
+
 ![Upper layer opacity at 60 percent](images/07-opacity.png)
 
 Both layers can also be darkened on their own. Darkening the upper one makes the hole stand out; darkening the lower one keeps the picture calm behind your icons.

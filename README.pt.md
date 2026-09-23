@@ -18,7 +18,7 @@ Sobre uma janela o ponteiro pertence a essa janela, então há um segundo caminh
 
 No niri há um terceiro caminho: "Seguir por trás das janelas" lê a posição do ponteiro do socket IPC do niri, e o buraco continua correndo por trás das janelas, visível onde elas forem translúcidas. O niri não fornece a posição do ponteiro por conta própria, então isso precisa de um niri com um patch meu (veja mais abaixo). Com um niri normal a opção fica oculta e os dois caminhos acima funcionam como sempre.
 
-"Opacidade da camada de cima" abaixo de 100 % deixa a imagem passar pela tela inteira, e o conjunto vira uma mistura de duas imagens com um ponto nítido ao redor do ponteiro. Com "Segunda imagem em cima" é a imagem que cobre o papel de parede e o buraco mostra o papel de parede. O tamanho do buraco, a suavidade da borda, um anel de luz se você quiser e a rapidez com que o buraco segue podem ser ajustados.
+"Opacidade da camada de cima" abaixo de 100 % deixa a imagem passar pela tela inteira, e o conjunto vira uma mistura de duas imagens com um ponto nítido ao redor do ponteiro. Com "Segunda imagem em cima" é a imagem que cobre o papel de parede e o buraco mostra o papel de parede. O tamanho do buraco, a suavidade da borda, um anel de luz se você quiser e a rapidez com que o buraco segue podem ser ajustados. "Intensidade do buraco" abaixo de 100 % abre o buraco só em parte, então a imagem aparece em volta do ponteiro sem substituir ali o papel de parede, por exemplo uma placa de circuito atrás de um papel de parede normal.
 
 A imagem é mapeada como o papel de parede do DMS, então esticar, ajustar e cortar ficam com o mesmo aspecto do seu papel de parede.
 
@@ -66,6 +66,7 @@ Configurações → Plugins → Xray Wallpaper
 | Anel luminoso | 0 px (desligado) |
 | Cor do anel | Destaque |
 | Opacidade da camada de cima | 100 % |
+| Intensidade do buraco | 100 % |
 | Escurecer a camada de cima / de baixo | 0 % / 0 % |
 | Velocidade de seguimento | 4000 px/s |
 | Seguir na área de trabalho | ligado |

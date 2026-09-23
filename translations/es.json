@@ -83,6 +83,12 @@
     "100 keeps the upper layer closed, so the picture shows in the hole alone. Lower values let it through everywhere.": {
         "100 keeps the upper layer closed, so the picture shows in the hole alone. Lower values let it through everywhere.": "100 mantiene cerrada la capa superior, así que la imagen solo se ve en el agujero. Valores menores la dejan pasar por todas partes."
     },
+    "Hole strength": {
+        "Hole strength": "Intensidad del agujero"
+    },
+    "How far the hole opens. 100 shows the layer below fully, lower values let it through only partly.": {
+        "How far the hole opens. 100 shows the layer below fully, lower values let it through only partly.": "Cuánto se abre el agujero. 100 muestra la capa de abajo por completo; valores menores solo la dejan pasar en parte."
+    },
     "Over a window the pointer belongs to that window. The peek mode puts a round opening above the windows instead. Put it on a key as a switch with 'dms ipc call xray peek toggle', or to show while the key is held with 'dms ipc call xray hold'.": {
         "Over a window the pointer belongs to that window. The peek mode puts a round opening above the windows instead. Put it on a key as a switch with 'dms ipc call xray peek toggle', or to show while the key is held with 'dms ipc call xray hold'.": "Sobre una ventana el puntero pertenece a esa ventana. El modo peek coloca en su lugar una abertura redonda sobre las ventanas. Ponlo en una tecla como interruptor con «dms ipc call xray peek toggle», o para verlo mientras mantienes la tecla con «dms ipc call xray hold»."
     },

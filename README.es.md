@@ -18,7 +18,7 @@ Sobre una ventana el puntero pertenece a esa ventana, así que hay una segunda v
 
 En niri hay una tercera vía: «Seguir detrás de las ventanas» lee la posición del puntero del socket IPC de niri, y el agujero sigue corriendo detrás de las ventanas, visible allí donde son translúcidas. niri no entrega la posición del puntero por sí mismo, así que esto necesita un niri con un parche mío (ver más abajo). Con un niri normal el ajuste queda oculto y las dos vías de arriba funcionan como siempre.
 
-«Opacidad de la capa superior» por debajo del 100 % deja pasar la imagen por toda la pantalla, con lo que el conjunto se convierte en una mezcla de dos imágenes con un punto despejado alrededor del puntero. Con «Segunda imagen arriba» la imagen tapa el fondo y el agujero muestra el fondo. El tamaño del agujero, la suavidad de su borde, un anillo de luz opcional y la rapidez con la que el agujero sigue al puntero se pueden ajustar.
+«Opacidad de la capa superior» por debajo del 100 % deja pasar la imagen por toda la pantalla, con lo que el conjunto se convierte en una mezcla de dos imágenes con un punto despejado alrededor del puntero. Con «Segunda imagen arriba» la imagen tapa el fondo y el agujero muestra el fondo. El tamaño del agujero, la suavidad de su borde, un anillo de luz opcional y la rapidez con la que el agujero sigue al puntero se pueden ajustar. «Intensidad del agujero» por debajo del 100 % abre el agujero solo en parte, así que la imagen se transparenta alrededor del puntero sin sustituir allí el fondo, por ejemplo una placa de circuito detrás de un fondo normal.
 
 La imagen se mapea igual que el fondo de DMS, así que estirar, ajustar y recortar se ven como en tu fondo.
 
@@ -66,6 +66,7 @@ Ajustes → Complementos → Xray Wallpaper
 | Anillo luminoso | 0 px (desactivado) |
 | Color del anillo | acento |
 | Opacidad de la capa superior | 100 % |
+| Intensidad del agujero | 100 % |
 | Oscurecer la capa superior / inferior | 0 % / 0 % |
 | Velocidad de seguimiento | 4000 px/s |
 | Seguir en el escritorio | activado |

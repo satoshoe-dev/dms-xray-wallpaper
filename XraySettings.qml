@@ -174,6 +174,17 @@ PluginSettings {
 
     SliderSetting {
         visible: enableToggle.value
+        settingKey: "holeStrength"
+        label: I18n.trFor("xrayWallpaper", "Hole strength")
+        description: I18n.trFor("xrayWallpaper", "How far the hole opens. 100 shows the layer below fully, lower values let it through only partly.")
+        defaultValue: 100
+        minimum: 0
+        maximum: 100
+        unit: "%"
+    }
+
+    SliderSetting {
+        visible: enableToggle.value
         settingKey: "dimTop"
         label: I18n.trFor("xrayWallpaper", "Darken the upper layer")
         defaultValue: 0

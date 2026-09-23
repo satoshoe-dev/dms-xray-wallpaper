@@ -100,6 +100,12 @@ PluginComponent {
         root._settings;
         return Math.max(0, Math.min(100, cfg("topOpacity", 100)));
     }
+    // How far the hole opens: 100 shows the other layer fully, lower values
+    // let it through only partly
+    readonly property int holeStrength: {
+        root._settings;
+        return Math.max(0, Math.min(100, cfg("holeStrength", 100)));
+    }
     // Follows the pointer everywhere through niri's pointer stream. Needs a niri
     // with the pointer stream patch.
     readonly property bool followEverywhere: {
@@ -260,7 +266,7 @@ PluginComponent {
 
         // dms ipc call xray set <key> <value>
         function set(key: string, value: string): string {
-            const allowed = ["on", "image", "imageOnTop", "radius", "softness", "ringWidth", "ringColor", "dimTop", "dimBottom", "followSpeed", "followOnDesktop", "peekSeconds", "topOpacity", "holdGrace", "followEverywhere"];
+            const allowed = ["on", "image", "imageOnTop", "radius", "softness", "ringWidth", "ringColor", "dimTop", "dimBottom", "followSpeed", "followOnDesktop", "peekSeconds", "topOpacity", "holeStrength", "holdGrace", "followEverywhere"];
             if (allowed.indexOf(key) < 0)
                 return "unknown key, allowed: " + allowed.join(", ");
             let v = value;
