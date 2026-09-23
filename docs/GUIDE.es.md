@@ -111,7 +111,7 @@ Wayland entrega el movimiento del puntero solo a la superficie que está debajo 
 niri msg pointer-stream      # prints positions while you move the mouse
 ```
 
-Si eso imprime posiciones, activa «Seguir detrás de las ventanas». Entonces el agujero corre por todas partes, también detrás de las ventanas, y aparece allí donde una ventana es translúcida. Si niri no conoce el comando, tu niri no tiene el flujo del puntero y el interruptor se queda sin efecto.
+Si eso imprime posiciones, activa «Seguir detrás de las ventanas». Entonces el agujero corre por todas partes, también detrás de las ventanas, y aparece allí donde una ventana es translúcida. Si niri no conoce el comando, tu niri no tiene el flujo del puntero y el interruptor no aparece.
 
 ![El agujero detrás de una ventana translúcida](images/08-behind.png)
 

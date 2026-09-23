@@ -16,7 +16,7 @@ On the desktop the hole follows the pointer; move the pointer away from the desk
 
 Over a window the pointer belongs to that window, so there is a second way in: the peek mode. It opens a round view of the picture above all windows, follows the pointer everywhere and ends on a click, after a few seconds, or when you let go of the key you hold.
 
-There is a third way on niri: "Follow behind the windows" reads the pointer position from niri's IPC socket, and the hole keeps running behind the windows, seen wherever they are see-through. niri does not hand out the pointer position on its own, so this needs a niri with a patch of mine (see below). With a normal niri the switch does nothing and the two ways above work as usual.
+There is a third way on niri: "Follow behind the windows" reads the pointer position from niri's IPC socket, and the hole keeps running behind the windows, seen wherever they are see-through. niri does not hand out the pointer position on its own, so this needs a niri with a patch of mine (see below). With a normal niri the switch stays hidden and the two ways above work as usual.
 
 "Upper layer opacity" below 100 % lets the picture through across the whole screen, which turns the whole thing into a blend of two pictures with a clear spot around the pointer. With "Second image on top" the picture covers the wallpaper instead and the hole shows the wallpaper. The hole size, the softness of its edge, an optional ring of light and how fast the hole follows can all be set.
 
@@ -99,7 +99,7 @@ The hold bind works through the key repeat: every repeat pushes the end a little
 
 Wayland delivers pointer motion only to the surface under the pointer, so no client can follow it once a window is in the way. niri knows the position but does not publish it.
 
-The pointer stream is a patch of mine for niri and is not part of niri. It adds a separate `PointerStream` request to the IPC that sends `PointerMoved` events, so clients that do not ask for it never see them. With a niri built with this patch the switch works. A normal niri answers the request with an error; the plugin remembers that and stays with the desktop sensor and the peek mode. The switch then changes nothing, and everything else works as described above.
+The pointer stream is a patch of mine for niri and is not part of niri. It adds a separate `PointerStream` request to the IPC that sends `PointerMoved` events, so clients that do not ask for it never see them. With a niri built with this patch the switch works. A normal niri answers the request with an error; the plugin remembers that and stays with the desktop sensor and the peek mode. The settings page then hides the switch, and everything else works as described above.
 
 The patch against niri 26.04 is in the branch [pointer-stream-v26.04](https://github.com/satoshoe-dev/niri/tree/pointer-stream-v26.04) of my niri fork. It builds like niri itself, see the niri README.
 

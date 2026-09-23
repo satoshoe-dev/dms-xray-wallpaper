@@ -16,7 +16,7 @@ En el escritorio el agujero sigue al puntero; aparta el puntero del escritorio y
 
 Sobre una ventana el puntero pertenece a esa ventana, así que hay una segunda vía: el modo peek. Abre una vista redonda de la imagen por encima de todas las ventanas, sigue al puntero en cualquier sitio y termina con un clic, a los pocos segundos, o cuando sueltas la tecla que mantienes pulsada.
 
-En niri hay una tercera vía: «Seguir detrás de las ventanas» lee la posición del puntero del socket IPC de niri, y el agujero sigue corriendo detrás de las ventanas, visible allí donde son translúcidas. niri no entrega la posición del puntero por sí mismo, así que esto necesita un niri con un parche mío (ver más abajo). Con un niri normal el ajuste no hace nada y las dos vías de arriba funcionan como siempre.
+En niri hay una tercera vía: «Seguir detrás de las ventanas» lee la posición del puntero del socket IPC de niri, y el agujero sigue corriendo detrás de las ventanas, visible allí donde son translúcidas. niri no entrega la posición del puntero por sí mismo, así que esto necesita un niri con un parche mío (ver más abajo). Con un niri normal el ajuste queda oculto y las dos vías de arriba funcionan como siempre.
 
 «Opacidad de la capa superior» por debajo del 100 % deja pasar la imagen por toda la pantalla, con lo que el conjunto se convierte en una mezcla de dos imágenes con un punto despejado alrededor del puntero. Con «Segunda imagen arriba» la imagen tapa el fondo y el agujero muestra el fondo. El tamaño del agujero, la suavidad de su borde, un anillo de luz opcional y la rapidez con la que el agujero sigue al puntero se pueden ajustar.
 
@@ -99,7 +99,7 @@ La combinación de mantener pulsada se apoya en la repetición de tecla: cada re
 
 Wayland entrega el movimiento del puntero solo a la superficie que está debajo de él, así que ningún cliente puede seguirlo en cuanto hay una ventana por medio. niri conoce la posición, pero no la publica.
 
-El flujo del puntero es un parche mío para niri y no forma parte de niri. Añade al IPC una petición `PointerStream` aparte que envía eventos `PointerMoved`, de modo que los clientes que no la piden nunca los ven. Con un niri compilado con este parche el interruptor funciona. Un niri normal responde a la petición con un error; el plugin lo anota y se queda con el sensor del escritorio y el modo peek. El interruptor entonces no cambia nada, y todo lo demás funciona como se describe arriba.
+El flujo del puntero es un parche mío para niri y no forma parte de niri. Añade al IPC una petición `PointerStream` aparte que envía eventos `PointerMoved`, de modo que los clientes que no la piden nunca los ven. Con un niri compilado con este parche el interruptor funciona. Un niri normal responde a la petición con un error; el plugin lo anota y se queda con el sensor del escritorio y el modo peek. La página de ajustes oculta entonces el interruptor, y todo lo demás funciona como se describe arriba.
 
 El parche para niri 26.04 está en la rama [pointer-stream-v26.04](https://github.com/satoshoe-dev/niri/tree/pointer-stream-v26.04) de mi fork de niri. Se compila igual que niri, consulta su README.
 

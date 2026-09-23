@@ -16,7 +16,7 @@ Sur le bureau, le trou suit le pointeur ; éloignez le pointeur du bureau et le 
 
 Au-dessus d’une fenêtre, le pointeur appartient à cette fenêtre, il y a donc une deuxième entrée : le mode peek. Il ouvre une vue ronde de l’image par-dessus toutes les fenêtres, suit le pointeur partout et se termine sur un clic, après quelques secondes, ou quand vous relâchez la touche que vous tenez.
 
-Sous niri il y a une troisième entrée : « Suivre derrière les fenêtres » lit la position du pointeur sur le socket IPC de niri, et le trou continue de courir derrière les fenêtres, visible partout où elles sont translucides. niri ne donne pas la position du pointeur de lui-même, il faut donc un niri avec un patch que j’ai écrit (voir plus bas). Avec un niri normal, le réglage ne fait rien et les deux entrées ci-dessus fonctionnent comme d’habitude.
+Sous niri il y a une troisième entrée : « Suivre derrière les fenêtres » lit la position du pointeur sur le socket IPC de niri, et le trou continue de courir derrière les fenêtres, visible partout où elles sont translucides. niri ne donne pas la position du pointeur de lui-même, il faut donc un niri avec un patch que j’ai écrit (voir plus bas). Avec un niri normal, le réglage reste masqué et les deux entrées ci-dessus fonctionnent comme d’habitude.
 
 « Opacité de la couche du dessus » en dessous de 100 % laisse passer l’image sur tout l’écran, ce qui donne un mélange de deux images avec un endroit net autour du pointeur. Avec « Deuxième image au-dessus », c’est l’image qui recouvre le fond d’écran et le trou montre le fond d’écran. La taille du trou, la douceur de son bord, un anneau de lumière si vous en voulez un et la vitesse de suivi du trou se règlent tous.
 
@@ -99,7 +99,7 @@ Le raccourci à maintenir passe par la répétition de touche : chaque répétit
 
 Wayland ne livre les mouvements du pointeur qu’à la surface sous le pointeur, aucun client ne peut donc le suivre dès qu’une fenêtre est dans le chemin. niri connaît la position mais ne la publie pas.
 
-Le flux du pointeur est un patch que j’ai écrit pour niri et ne fait pas partie de niri. Il ajoute à l’IPC une requête `PointerStream` à part qui envoie des événements `PointerMoved`, si bien que les clients qui ne la demandent pas ne les voient jamais. Avec un niri compilé avec ce patch, l’interrupteur fonctionne. Un niri normal répond à la requête par une erreur ; le plugin le note et s’en tient au capteur du bureau et au mode peek. L’interrupteur ne change alors rien, et tout le reste fonctionne comme décrit plus haut.
+Le flux du pointeur est un patch que j’ai écrit pour niri et ne fait pas partie de niri. Il ajoute à l’IPC une requête `PointerStream` à part qui envoie des événements `PointerMoved`, si bien que les clients qui ne la demandent pas ne les voient jamais. Avec un niri compilé avec ce patch, l’interrupteur fonctionne. Un niri normal répond à la requête par une erreur ; le plugin le note et s’en tient au capteur du bureau et au mode peek. La page de paramètres masque alors l’interrupteur, et tout le reste fonctionne comme décrit plus haut.
 
 Le patch pour niri 26.04 se trouve dans la branche [pointer-stream-v26.04](https://github.com/satoshoe-dev/niri/tree/pointer-stream-v26.04) de mon fork de niri. Il se compile comme niri lui-même, voir son README.
 

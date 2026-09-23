@@ -16,7 +16,7 @@ Na área de trabalho o buraco segue o ponteiro; afaste o ponteiro da área de tr
 
 Sobre uma janela o ponteiro pertence a essa janela, então há um segundo caminho: o modo peek. Ele abre uma vista redonda da imagem acima de todas as janelas, segue o ponteiro para qualquer lugar e termina com um clique, depois de alguns segundos, ou quando você solta a tecla que está segurando.
 
-No niri há um terceiro caminho: "Seguir por trás das janelas" lê a posição do ponteiro do socket IPC do niri, e o buraco continua correndo por trás das janelas, visível onde elas forem translúcidas. O niri não fornece a posição do ponteiro por conta própria, então isso precisa de um niri com um patch meu (veja mais abaixo). Com um niri normal a opção não faz nada e os dois caminhos acima funcionam como sempre.
+No niri há um terceiro caminho: "Seguir por trás das janelas" lê a posição do ponteiro do socket IPC do niri, e o buraco continua correndo por trás das janelas, visível onde elas forem translúcidas. O niri não fornece a posição do ponteiro por conta própria, então isso precisa de um niri com um patch meu (veja mais abaixo). Com um niri normal a opção fica oculta e os dois caminhos acima funcionam como sempre.
 
 "Opacidade da camada de cima" abaixo de 100 % deixa a imagem passar pela tela inteira, e o conjunto vira uma mistura de duas imagens com um ponto nítido ao redor do ponteiro. Com "Segunda imagem em cima" é a imagem que cobre o papel de parede e o buraco mostra o papel de parede. O tamanho do buraco, a suavidade da borda, um anel de luz se você quiser e a rapidez com que o buraco segue podem ser ajustados.
 
@@ -99,7 +99,7 @@ O atalho para manter pressionado funciona pela repetição da tecla: cada repeti
 
 O Wayland entrega o movimento do ponteiro só para a superfície que está embaixo dele, então nenhum cliente consegue segui-lo assim que uma janela fica no meio. O niri conhece a posição, mas não a publica.
 
-O fluxo do ponteiro é um patch que eu escrevi para o niri e não faz parte do niri. Ele adiciona ao IPC um pedido `PointerStream` separado que envia eventos `PointerMoved`, então os clientes que não o pedem nunca os veem. Com um niri compilado com este patch o interruptor funciona. Um niri normal responde ao pedido com um erro; o plugin registra isso e fica só com o sensor da área de trabalho e o modo peek. Nesse caso o interruptor não muda nada, e todo o resto funciona como descrito acima.
+O fluxo do ponteiro é um patch que eu escrevi para o niri e não faz parte do niri. Ele adiciona ao IPC um pedido `PointerStream` separado que envia eventos `PointerMoved`, então os clientes que não o pedem nunca os veem. Com um niri compilado com este patch o interruptor funciona. Um niri normal responde ao pedido com um erro; o plugin registra isso e fica só com o sensor da área de trabalho e o modo peek. Nesse caso a página de configurações esconde o interruptor, e todo o resto funciona como descrito acima.
 
 O patch para o niri 26.04 está no branch [pointer-stream-v26.04](https://github.com/satoshoe-dev/niri/tree/pointer-stream-v26.04) do meu fork do niri. Ele é compilado como o próprio niri, veja o README dele.
 

@@ -111,7 +111,7 @@ Wayland hands pointer motion only to the surface under the pointer, which is why
 niri msg pointer-stream      # prints positions while you move the mouse
 ```
 
-If that prints positions, switch on "Follow behind the windows". The hole then runs everywhere, also behind windows, and shows up wherever a window is see-through. If niri does not know the command, your niri has no pointer stream and the switch stays without effect.
+If that prints positions, switch on "Follow behind the windows". The hole then runs everywhere, also behind windows, and shows up wherever a window is see-through. If niri does not know the command, your niri has no pointer stream and the switch does not appear.
 
 ![The hole behind a see-through window](images/08-behind.png)
 

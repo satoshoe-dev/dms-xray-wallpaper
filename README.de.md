@@ -16,7 +16,7 @@ Auf dem Schreibtisch folgt das Loch dem Zeiger; nimmst du den Zeiger vom Schreib
 
 Über einem Fenster gehört der Zeiger diesem Fenster, darum gibt es einen zweiten Weg hinein: den Peek-Modus. Er öffnet eine runde Ansicht des Bildes über allen Fenstern, folgt dem Zeiger überall und endet mit einem Klick, nach einigen Sekunden oder wenn du die gehaltene Taste loslässt.
 
-Unter niri gibt es einen dritten Weg: „Hinter den Fenstern folgen“ liest die Zeigerposition aus dem IPC-Socket von niri, und das Loch läuft hinter den Fenstern weiter mit, zu sehen überall dort, wo sie durchscheinend sind. Von sich aus gibt niri die Zeigerposition nicht heraus, dafür braucht es ein niri mit einem Patch von mir (siehe unten). Mit einem normalen niri tut der Schalter nichts, und die beiden Wege oben arbeiten wie gewohnt.
+Unter niri gibt es einen dritten Weg: „Hinter den Fenstern folgen“ liest die Zeigerposition aus dem IPC-Socket von niri, und das Loch läuft hinter den Fenstern weiter mit, zu sehen überall dort, wo sie durchscheinend sind. Von sich aus gibt niri die Zeigerposition nicht heraus, dafür braucht es ein niri mit einem Patch von mir (siehe unten). Mit einem normalen niri bleibt der Schalter ausgeblendet, und die beiden Wege oben arbeiten wie gewohnt.
 
 „Deckkraft der oberen Schicht“ unter 100 % lässt das Bild über den ganzen Bildschirm durch; daraus wird eine Mischung aus zwei Bildern mit einer klaren Stelle um den Zeiger. Mit „Zweites Bild oben“ deckt das Bild stattdessen das Wallpaper ab und das Loch zeigt das Wallpaper. Die Größe des Lochs, die Weichheit seiner Kante, ein Lichtring nach Wunsch und wie schnell das Loch folgt lassen sich alle einstellen.
 
@@ -99,7 +99,7 @@ Die Haltebindung arbeitet über die Tastenwiederholung: jede Wiederholung schieb
 
 Wayland liefert Zeigerbewegungen nur an die Fläche unter dem Zeiger, kein Programm kann ihm also folgen, sobald ein Fenster dazwischen liegt. niri kennt die Position, gibt sie aber nicht heraus.
 
-Der Zeigerstrom ist ein Patch von mir für niri und nicht Teil von niri. Er ergänzt das IPC um eine eigene `PointerStream`-Anfrage, die `PointerMoved`-Ereignisse schickt; Programme, die nicht danach fragen, bekommen sie nie zu sehen. Mit einem niri, das mit diesem Patch gebaut ist, funktioniert der Schalter. Ein normales niri beantwortet die Anfrage mit einem Fehler, das Plugin merkt sich das und bleibt beim Fühler auf dem Schreibtisch und beim Peek-Modus. Der Schalter ändert dann nichts, alles andere funktioniert wie oben beschrieben.
+Der Zeigerstrom ist ein Patch von mir für niri und nicht Teil von niri. Er ergänzt das IPC um eine eigene `PointerStream`-Anfrage, die `PointerMoved`-Ereignisse schickt; Programme, die nicht danach fragen, bekommen sie nie zu sehen. Mit einem niri, das mit diesem Patch gebaut ist, funktioniert der Schalter. Ein normales niri beantwortet die Anfrage mit einem Fehler, das Plugin merkt sich das und bleibt beim Fühler auf dem Schreibtisch und beim Peek-Modus. Die Einstellungsseite blendet den Schalter dann aus, alles andere funktioniert wie oben beschrieben.
 
 Der Patch für niri 26.04 liegt im Zweig [pointer-stream-v26.04](https://github.com/satoshoe-dev/niri/tree/pointer-stream-v26.04) meines niri-Forks. Gebaut wird er wie niri selbst, siehe dessen README.
 

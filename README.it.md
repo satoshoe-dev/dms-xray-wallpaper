@@ -16,7 +16,7 @@ Sulla scrivania il foro segue il puntatore; porta il puntatore via dalla scrivan
 
 Sopra una finestra il puntatore appartiene a quella finestra, quindi c'è una seconda via: la modalità peek. Apre una vista rotonda dell'immagine al di sopra di tutte le finestre, segue il puntatore in ogni punto e finisce con un clic, dopo qualche secondo, oppure quando lasci il tasto che tieni premuto.
 
-Su niri c'è una terza via: "Seguire dietro le finestre" legge la posizione del puntatore dal socket IPC di niri, e il foro continua a correre dietro le finestre, visibile dove sono trasparenti. niri da solo non fornisce la posizione del puntatore, quindi serve un niri con una mia patch (vedi sotto). Con un niri normale l'impostazione non fa nulla e le due vie di sopra funzionano come sempre.
+Su niri c'è una terza via: "Seguire dietro le finestre" legge la posizione del puntatore dal socket IPC di niri, e il foro continua a correre dietro le finestre, visibile dove sono trasparenti. niri da solo non fornisce la posizione del puntatore, quindi serve un niri con una mia patch (vedi sotto). Con un niri normale l'impostazione resta nascosta e le due vie di sopra funzionano come sempre.
 
 "Opacità del livello sopra" sotto il 100 % lascia passare l'immagine su tutto lo schermo, e il tutto diventa una miscela di due immagini con un punto nitido attorno al puntatore. Con "Seconda immagine sopra" è invece l'immagine a coprire lo sfondo e il foro mostra lo sfondo. La dimensione del foro, la morbidezza del suo bordo, un anello di luce se lo vuoi e la velocità con cui il foro insegue si possono impostare tutti.
 
@@ -99,7 +99,7 @@ La scorciatoia da tenere premuta lavora attraverso la ripetizione del tasto: ogn
 
 Wayland consegna i movimenti del puntatore solo alla superficie sotto il puntatore, quindi nessun client può seguirlo appena c'è una finestra di mezzo. niri conosce la posizione ma non la pubblica.
 
-Il flusso del puntatore è una patch che ho scritto io per niri e non fa parte di niri. Aggiunge all'IPC una richiesta `PointerStream` a parte che manda eventi `PointerMoved`, così i client che non la chiedono non li vedono mai. Con un niri compilato con questa patch l'interruttore funziona. Un niri normale risponde alla richiesta con un errore; il plugin se lo segna e resta al sensore della scrivania e alla modalità peek. L'interruttore allora non cambia nulla, e tutto il resto funziona come descritto sopra.
+Il flusso del puntatore è una patch che ho scritto io per niri e non fa parte di niri. Aggiunge all'IPC una richiesta `PointerStream` a parte che manda eventi `PointerMoved`, così i client che non la chiedono non li vedono mai. Con un niri compilato con questa patch l'interruttore funziona. Un niri normale risponde alla richiesta con un errore; il plugin se lo segna e resta al sensore della scrivania e alla modalità peek. La pagina delle impostazioni allora nasconde l'interruttore, e tutto il resto funziona come descritto sopra.
 
 La patch per niri 26.04 si trova nel ramo [pointer-stream-v26.04](https://github.com/satoshoe-dev/niri/tree/pointer-stream-v26.04) del mio fork di niri. Si compila come niri stesso, vedi il suo README.
 

@@ -111,7 +111,7 @@ Wayland passa i movimenti del puntatore solo alla superficie sotto il puntatore,
 niri msg pointer-stream      # prints positions while you move the mouse
 ```
 
-Se compaiono delle posizioni, accendi "Seguire dietro le finestre". Il foro corre allora dappertutto, anche dietro le finestre, e si vede dove una finestra è trasparente. Se niri non conosce il comando, il tuo niri non ha il flusso del puntatore e l'interruttore resta senza effetto.
+Se compaiono delle posizioni, accendi "Seguire dietro le finestre". Il foro corre allora dappertutto, anche dietro le finestre, e si vede dove una finestra è trasparente. Se niri non conosce il comando, il tuo niri non ha il flusso del puntatore e l'interruttore non compare.
 
 ![Il foro dietro una finestra trasparente](images/08-behind.png)
 

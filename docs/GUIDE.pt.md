@@ -111,7 +111,7 @@ O Wayland só entrega o movimento do ponteiro à superfície que está embaixo d
 niri msg pointer-stream      # prints positions while you move the mouse
 ```
 
-Se aparecerem posições, ative "Seguir por trás das janelas". O buraco então passa a correr em toda parte, também por trás das janelas, e aparece onde uma janela for translúcida. Se o niri não conhecer o comando, o seu niri não tem o fluxo do ponteiro e o interruptor fica sem efeito.
+Se aparecerem posições, ative "Seguir por trás das janelas". O buraco então passa a correr em toda parte, também por trás das janelas, e aparece onde uma janela for translúcida. Se o niri não conhecer o comando, o seu niri não tem o fluxo do ponteiro e o interruptor não aparece.
 
 ![O buraco por trás de uma janela translúcida](images/08-behind.png)
 

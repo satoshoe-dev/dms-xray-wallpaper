@@ -4,6 +4,8 @@
 pragma ComponentBehavior: Bound
 
 import QtQuick
+import Quickshell
+import Quickshell.Io
 import qs.Common
 import qs.Modals.FileBrowser
 import qs.Services
@@ -18,6 +20,32 @@ PluginSettings {
     function cfg(key, fallback) {
         root._settings;
         return SettingsData.getPluginSetting("xrayWallpaper", key, fallback);
+    }
+
+    // Same check as the daemon: does the running niri know the pointer stream?
+    // The first reply line is {"Ok": ...} or {"Err": ...}; after it the probe
+    // disconnects again.
+    property bool streamSupported: false
+    property bool streamProbed: false
+    Socket {
+        path: Quickshell.env("NIRI_SOCKET") || ""
+        connected: CompositorService.isNiri && path !== "" && !root.streamProbed
+
+        parser: SplitParser {
+            splitMarker: "\n"
+
+            onRead: line => {
+                try {
+                    root.streamSupported = JSON.parse(line).Ok !== undefined;
+                } catch (e) {}
+                root.streamProbed = true;
+            }
+        }
+
+        onConnectedChanged: {
+            if (connected)
+                write("\"PointerStream\"\n");
+        }
     }
 
     ToggleSetting {
@@ -192,7 +220,7 @@ PluginSettings {
     }
 
     ToggleSetting {
-        visible: enableToggle.value && CompositorService.isNiri
+        visible: enableToggle.value && CompositorService.isNiri && root.streamSupported
         settingKey: "followEverywhere"
         label: I18n.trFor("xrayWallpaper", "Follow behind the windows")
         description: I18n.trFor("xrayWallpaper", "Takes the pointer position from niri instead of a sensor, so the hole also runs behind the windows, visible wherever they are see-through. Needs niri built with the pointer stream patch from the README. With a normal niri nothing changes.")

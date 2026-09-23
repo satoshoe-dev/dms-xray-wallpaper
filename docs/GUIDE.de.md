@@ -111,7 +111,7 @@ Wayland gibt Zeigerbewegungen nur an die Fläche unter dem Zeiger weiter, darum 
 niri msg pointer-stream      # prints positions while you move the mouse
 ```
 
-Wenn da Positionen erscheinen, schalte „Hinter den Fenstern folgen“ ein. Das Loch läuft dann überall mit, auch hinter Fenstern, und zeigt sich dort, wo ein Fenster durchscheinend ist. Kennt niri den Befehl nicht, hat dein niri keinen Zeigerstrom, und der Schalter bleibt ohne Wirkung.
+Wenn da Positionen erscheinen, schalte „Hinter den Fenstern folgen“ ein. Das Loch läuft dann überall mit, auch hinter Fenstern, und zeigt sich dort, wo ein Fenster durchscheinend ist. Kennt niri den Befehl nicht, hat dein niri keinen Zeigerstrom, und der Schalter erscheint nicht.
 
 ![Das Loch hinter einem durchscheinenden Fenster](images/08-behind.png)
 

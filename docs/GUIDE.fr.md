@@ -111,7 +111,7 @@ Wayland ne transmet les mouvements du pointeur qu’à la surface sous le pointe
 niri msg pointer-stream      # prints positions while you move the mouse
 ```
 
-Si des positions s’affichent, activez « Suivre derrière les fenêtres ». Le trou court alors partout, aussi derrière les fenêtres, et se montre là où une fenêtre est translucide. Si niri ne connaît pas la commande, votre niri n’a pas le flux du pointeur et l’interrupteur reste sans effet.
+Si des positions s’affichent, activez « Suivre derrière les fenêtres ». Le trou court alors partout, aussi derrière les fenêtres, et se montre là où une fenêtre est translucide. Si niri ne connaît pas la commande, votre niri n’a pas le flux du pointeur et l’interrupteur n’apparaît pas.
 
 ![Le trou derrière une fenêtre translucide](images/08-behind.png)
 
