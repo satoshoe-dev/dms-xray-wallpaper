@@ -80,13 +80,11 @@ PluginSettings {
 
             DankButton {
                 text: I18n.trFor("xrayWallpaper", "Choose image")
-                buttonHeight: 36
                 onClicked: imageBrowser.open()
             }
 
             DankButton {
                 text: I18n.trFor("xrayWallpaper", "Remove")
-                buttonHeight: 36
                 enabled: root.cfg("image", "") !== ""
                 opacity: enabled ? 1 : 0.5
                 onClicked: SettingsData.setPluginSetting("xrayWallpaper", "image", "")
