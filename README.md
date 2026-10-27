@@ -24,7 +24,7 @@ The picture is mapped like the DMS wallpaper, so stretch, fit and crop look the 
 
 ## Requirements
 
-DankMaterialShell 1.6.1 or newer. I use it on niri. Everything works with a normal niri except "Follow behind the windows", which needs a patched niri, see [Following behind the windows](#following-behind-the-windows).
+DankMaterialShell 1.6.1 or newer, tested with 1.6.2 and 2.0.0. I use it on niri. Everything works with a normal niri except "Follow behind the windows", which needs a patched niri, see [Following behind the windows](#following-behind-the-windows).
 
 On niri, background surfaces move with the workspaces unless they sit in the backdrop. Add this to your niri config, otherwise the picture scrolls away when you switch workspaces:
 
